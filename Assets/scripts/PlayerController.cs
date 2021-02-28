@@ -26,10 +26,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector3 pos = transform.position;
-        print(canMove);
+
         if (canMove)
         {
-            print(canMove);
             if (Input.GetKey(KeyCode.W))
             {
                 pos.y += panSpeed * Time.deltaTime;

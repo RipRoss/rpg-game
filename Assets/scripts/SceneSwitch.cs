@@ -11,7 +11,6 @@ public class SceneSwitch : MonoBehaviour
     public AreaEntrance theEntrance;
 
     void Start() {
-        print("area    " + areaTransitionName);
         //theEntrance.transitionName = areaTransitionName;
     }
 
