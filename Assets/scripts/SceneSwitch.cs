@@ -20,6 +20,7 @@ public class SceneSwitch : MonoBehaviour
         if (other.tag == "Player")
         {
             anim.SetTrigger("Fade");
+            PlayerController.instance.canMove = false;
             PlayerController.instance.areaTransitionName = areaTransitionName;
         }
     }

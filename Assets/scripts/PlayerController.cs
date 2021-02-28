@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public float panSpeed;
     public static PlayerController instance;
     public string areaTransitionName;
+    public bool canMove = true;
 
     void Start()
     {
@@ -25,26 +26,30 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector3 pos = transform.position;
-
-        if (Input.GetKey(KeyCode.W))
+        print(canMove);
+        if (canMove)
         {
-            pos.y += panSpeed * Time.deltaTime;
-        }
+            print(canMove);
+            if (Input.GetKey(KeyCode.W))
+            {
+                pos.y += panSpeed * Time.deltaTime;
+            }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            pos.x -= panSpeed * Time.deltaTime;
-        }
+            if (Input.GetKey(KeyCode.A))
+            {
+                pos.x -= panSpeed * Time.deltaTime;
+            }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            pos.y -= panSpeed * Time.deltaTime;
-        }
+            if (Input.GetKey(KeyCode.S))
+            {
+                pos.y -= panSpeed * Time.deltaTime;
+            }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            pos.x += panSpeed * Time.deltaTime;
-        }
+            if (Input.GetKey(KeyCode.D))
+            {
+                pos.x += panSpeed * Time.deltaTime;
+            }
+        }        
 
         transform.position = pos;
     }

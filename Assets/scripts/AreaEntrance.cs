@@ -14,6 +14,7 @@ public class AreaEntrance : MonoBehaviour
 
         if(transitionName == PlayerController.instance.areaTransitionName)
         {
+            PlayerController.instance.canMove = true;
             PlayerController.instance.transform.position = this.transform.position;
         }
     }
