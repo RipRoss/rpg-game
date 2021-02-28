@@ -5381,6 +5381,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1903145155607904688, guid: db626d504ba96a0499dbf4b500b1234b,
+        type: 3}
+      propertyPath: transitionName
+      value: 2-1
+      objectReference: {fileID: 0}
     - target: {fileID: 1903145155607904689, guid: db626d504ba96a0499dbf4b500b1234b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5389,7 +5394,7 @@ PrefabInstance:
     - target: {fileID: 1903145155607904689, guid: db626d504ba96a0499dbf4b500b1234b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.79
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 1903145155607904689, guid: db626d504ba96a0499dbf4b500b1234b,
         type: 3}
@@ -5404,7 +5409,7 @@ PrefabInstance:
     - target: {fileID: 1903145156766963934, guid: db626d504ba96a0499dbf4b500b1234b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1903145157476707604, guid: db626d504ba96a0499dbf4b500b1234b,
         type: 3}
@@ -5430,6 +5435,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AreaExit
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903145157476707606, guid: db626d504ba96a0499dbf4b500b1234b,
+        type: 3}
+      propertyPath: areaTransitionName
+      value: 1-1
       objectReference: {fileID: 0}
     - target: {fileID: 1903145157476707607, guid: db626d504ba96a0499dbf4b500b1234b,
         type: 3}

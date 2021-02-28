@@ -11,12 +11,12 @@ public class SceneSwitch : MonoBehaviour
     public AreaEntrance theEntrance;
 
     void Start() {
-        theEntrance.transitionName = areaTransitionName;
+        print("area    " + areaTransitionName);
+        //theEntrance.transitionName = areaTransitionName;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("helloworld");
         if (other.tag == "Player")
         {
             anim.SetTrigger("Fade");
