@@ -21,6 +21,7 @@ public class SceneSwitch : MonoBehaviour
             anim.SetTrigger("Fade");
             PlayerController.instance.canMove = false;
             PlayerController.instance.areaTransitionName = areaTransitionName;
+            PickupItem.instance.SavePickupData();
         }
     }
 
