@@ -18,7 +18,12 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;   
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -79,4 +84,20 @@ public class Inventory : MonoBehaviour
         itemName.text = activeItem.itemName;
         itemDescription.text = activeItem.description;
     }
+    /*public void SavePickupData()
+    {
+        for (int i = 0; i < pickups.Length; i++)
+        {
+            if (pickups[i].gameObject.activeSelf)
+            {
+                PlayerPrefs.SetInt("StartScene_" + pickups[i].itemName + "_" + i, 1);
+                pickupsToShow[i] = true;
+            }
+            else
+            {
+                pickupsToShow[i] = false;
+                PlayerPrefs.SetInt("StartScene_" + pickups[i].itemName + "_" + i, 0);
+            }
+        }
+    }*/
 }

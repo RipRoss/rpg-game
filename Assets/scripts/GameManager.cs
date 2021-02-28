@@ -106,10 +106,20 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetFloat("Player_Position_y", PlayerController.instance.transform.position.y);
         PlayerPrefs.SetFloat("Player_Position_z", PlayerController.instance.transform.position.z);
 
+        for (int i = 0; i < itemsHeld.Length; i++)
+        {
+            PlayerPrefsX.SetStringArray("itemsHeld", itemsHeld);
+            PlayerPrefsX.SetIntArray("itemCounts", numberOfItems);
+            print(itemsHeld[i]);
+        }
     }
 
     public void LoadData()
     {
-        PlayerController.instance.transform.position = new Vector3(PlayerPrefs.GetFloat("Player_Position_x"), PlayerPrefs.GetFloat("Player_Position_y"), PlayerPrefs.GetFloat("Player_Position_z"));
+        if (PlayerPrefs.HasKey("itemsHeld") && PlayerPrefs.HasKey("itemCounts"))
+        {
+            itemsHeld = PlayerPrefsX.GetStringArray("itemsHeld");
+            numberOfItems = PlayerPrefsX.GetIntArray("itemCounts");
+        }
     }
 }
