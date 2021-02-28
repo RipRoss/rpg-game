@@ -18,7 +18,11 @@ public class SceneSwitch : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            PickupItem.instance.SavePickupData();
+            if (SceneManager.GetActiveScene().name != "NewScene")
+            {
+                PickupItem.instance.SavePickupData();
+            }
+
             anim.SetTrigger("Fade");
             PlayerController.instance.canMove = false;
             PlayerController.instance.areaTransitionName = areaTransitionName;

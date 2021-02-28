@@ -11,13 +11,8 @@ public class PickupItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (instance == null)
-        {
-            instance = this;
-        } 
-
+        instance = this;
         LoadPickUpData();
-        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
