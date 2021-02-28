@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
     public Text itemName, itemDescription; // useButtonText; // this is for future when we switch between use and equip
 
     public GameObject inventory;
+    public Text goldText;
     public bool open;
 
     // Start is called before the first frame update
@@ -40,6 +41,7 @@ public class Inventory : MonoBehaviour
             {
                 open = true;
                 showItems();
+                //goldText.text = GameManager.instance.currentGold + "g";
                 inventory.SetActive(true);
             }
         }
@@ -84,20 +86,4 @@ public class Inventory : MonoBehaviour
         itemName.text = activeItem.itemName;
         itemDescription.text = activeItem.description;
     }
-    /*public void SavePickupData()
-    {
-        for (int i = 0; i < pickups.Length; i++)
-        {
-            if (pickups[i].gameObject.activeSelf)
-            {
-                PlayerPrefs.SetInt("StartScene_" + pickups[i].itemName + "_" + i, 1);
-                pickupsToShow[i] = true;
-            }
-            else
-            {
-                pickupsToShow[i] = false;
-                PlayerPrefs.SetInt("StartScene_" + pickups[i].itemName + "_" + i, 0);
-            }
-        }
-    }*/
 }
