@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public string areaTransitionName;
     public bool canMove = true;
 
+    [SerializeField] private Stat health;
+
     void Start()
     {
         if (instance == null)
@@ -21,13 +23,28 @@ public class PlayerController : MonoBehaviour
         DontDestroyOnLoad(gameObject); // dont destroy the player
 
         PlayerController.instance.transform.position = new Vector3(PlayerPrefs.GetFloat("Player_Position_x"), PlayerPrefs.GetFloat("Player_Position_y"), PlayerPrefs.GetFloat("Player_Position_z"));
+
+        health.Initialize(100, 100);
+
     }
 
 
     // Update is called once per frame
     void Update()
     {
+
         Vector3 pos = transform.position;
+
+        //Health Debug
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            health.MyCurrentValue -= 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            health.MyCurrentValue += 1;
+        }
 
         if (canMove)
         {
