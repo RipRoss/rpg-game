@@ -19,12 +19,7 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-
-        DontDestroyOnLoad(gameObject);
+        instance = this;
     }
 
     // Update is called once per frame
