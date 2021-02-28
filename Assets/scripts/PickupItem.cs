@@ -46,11 +46,11 @@ public class PickupItem : MonoBehaviour
         {
             if (pickups[i].gameObject.activeSelf)
             {
-                PlayerPrefs.SetInt("StartScene_" + pickups[i].itemName, 1);
+                PlayerPrefs.SetInt("StartScene_" + pickups[i].itemName + "_" + i, 1);
                 pickupsToShow[i] = true;
             } else {
                 pickupsToShow[i] = false;
-                PlayerPrefs.SetInt("StartScene_" + pickups[i].itemName, 0);
+                PlayerPrefs.SetInt("StartScene_" + pickups[i].itemName + "_" + i, 0);
             }
         }
     }
@@ -61,9 +61,9 @@ public class PickupItem : MonoBehaviour
         {
             int intValueToSet = 0;
 
-            if (PlayerPrefs.HasKey("StartScene_" + pickups[i].itemName))
+            if (PlayerPrefs.HasKey("StartScene_" + pickups[i].itemName + "_" + i))
             {
-                intValueToSet = PlayerPrefs.GetInt("StartScene_" + pickups[i].itemName);
+                intValueToSet = PlayerPrefs.GetInt("StartScene_" + pickups[i].itemName + "_" + i);
             }
 
             if (intValueToSet == 0)
@@ -83,9 +83,9 @@ public class PickupItem : MonoBehaviour
         for (int i = 0; i < pickups.Length; i++)
         {
 
-            if (PlayerPrefs.HasKey("StartScene_" + pickups[i].itemName))
+            if (PlayerPrefs.HasKey("StartScene_" + pickups[i].itemName + "_" + i))
             {
-                PlayerPrefs.SetInt("StartScene_" + pickups[i].itemName, 1);
+                PlayerPrefs.SetInt("StartScene_" + pickups[i].itemName + "_" + i, 1);
             }
         }
         SavePickupData();
