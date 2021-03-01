@@ -8,7 +8,9 @@ public class PlayerController : MonoBehaviour
     public string areaTransitionName;
     public bool canMove = true;
 
-    [SerializeField] private Stat health;
+    public int maxHealth = 10;
+    public int currentHealth;
+    public PlayerHealth healthBar;
 
     void Start()
     {
@@ -24,8 +26,8 @@ public class PlayerController : MonoBehaviour
 
         PlayerController.instance.transform.position = new Vector3(PlayerPrefs.GetFloat("Player_Position_x"), PlayerPrefs.GetFloat("Player_Position_y"), PlayerPrefs.GetFloat("Player_Position_z"));
 
-        health.Initialize(100, 100);
-
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
 
@@ -33,18 +35,18 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+        if (Input.GetKeyDown(KeyCode.Q)) //Fake damage
+        {
+            TakeDamage(1);
+        }
+
+        if(Input.GetKeyDown(KeyCode.E)) //Fake heal
+        {
+            HealPlayer(1);
+        }
+
+
         Vector3 pos = transform.position;
-
-        //Health Debug
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            health.MyCurrentValue -= 1;
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            health.MyCurrentValue += 1;
-        }
 
         if (canMove)
         {
@@ -71,4 +73,24 @@ public class PlayerController : MonoBehaviour
 
         transform.position = pos;
     }
+
+
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        UpdateHealth();
+    }
+
+    void HealPlayer(int healAmount)
+    {
+        currentHealth += healAmount;
+        UpdateHealth();
+    }
+
+    void UpdateHealth()
+    {
+        healthBar.SetHealth(currentHealth);
+    }
+
+
 }
