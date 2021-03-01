@@ -72,9 +72,9 @@
     <Compile Include="Assets\Scripts\MainMemu.cs" />
     <Compile Include="Assets\Scripts\PickupItem.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerPrefsX.cs" />
     <Compile Include="Assets\Scripts\SceneSwitch.cs" />
-    <Compile Include="Assets\Scripts\Stat.cs" />
     <Reference Include="UnityEngine">
       <HintPath>A:/Program Files/Unity/2019.4.21f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
