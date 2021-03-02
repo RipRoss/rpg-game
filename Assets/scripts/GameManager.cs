@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         LoadData();
+        SaveData();
     }
 
     // Update is called once per frame
@@ -49,6 +50,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             LoadData();
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            removeMoney(100);
         }
     }
 
@@ -109,6 +115,18 @@ public class GameManager : MonoBehaviour
         Inventory.instance.showItems();
     }
 
+    public void addMoney(int amount)
+    {
+        currentGold += amount;
+        Inventory.instance.goldText.text = currentGold + "g";
+    }
+
+    public void removeMoney(int amount)
+    {
+        currentGold -= amount;
+        Inventory.instance.goldText.text = currentGold + "g";
+    }
+
     public void SaveData()
     {
         PlayerPrefs.SetString("Current_Scene", SceneManager.GetActiveScene().name);
@@ -133,6 +151,10 @@ public class GameManager : MonoBehaviour
             numberOfItems = PlayerPrefsX.GetIntArray("itemCounts");
         }
 
-        currentGold = PlayerPrefs.GetInt("Player_Gold");
+        if (PlayerPrefs.HasKey("Player_Gold"))
+        {
+            currentGold = PlayerPrefs.GetInt("Player_Gold");
+            print("helloworld");
+        }        
     }
 }

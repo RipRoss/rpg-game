@@ -35,8 +35,7 @@ public class PickupItem : MonoBehaviour
         {
             if (GetComponent<Item>().isGold)
             {
-                GameManager.instance.currentGold += GetComponent<Item>().amountToChange;
-                Inventory.instance.goldText.text = GameManager.instance.currentGold + "g";
+                GameManager.instance.addMoney(GetComponent<Item>().amountToChange);
             } else
             {
                 GameManager.instance.addItem(GetComponent<Item>().itemName);
