@@ -94,13 +94,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e648fd50fcd8846bd74fe305fe21b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGold: 0
   isItem: 0
   isWeapon: 1
   isArmour: 0
   itemName: Iron Sword
   description: Sword with 30 weapon str
   value: 15
-  itemSprite: {fileID: 21300074, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  itemSprite: {fileID: 21300078, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
   amountToChange: 0
   affectHP: 0
   affectMP: 0
@@ -202,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e648fd50fcd8846bd74fe305fe21b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGold: 0
   isItem: 0
   isWeapon: 1
   isArmour: 0
@@ -310,6 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e648fd50fcd8846bd74fe305fe21b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGold: 0
   isItem: 1
   isWeapon: 0
   isArmour: 0
@@ -418,6 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e648fd50fcd8846bd74fe305fe21b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGold: 0
   isItem: 0
   isWeapon: 0
   isArmour: 1
@@ -441,6 +445,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6429117880877509585}
+  - component: {fileID: 1565303207}
   m_Layer: 0
   m_Name: Items
   m_TagString: Untagged
@@ -468,6 +473,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1565303207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429117880877509584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5825a7d04e2ee428175e45474996f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6429117881300774143
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e648fd50fcd8846bd74fe305fe21b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGold: 0
   isItem: 0
   isWeapon: 0
   isArmour: 1
@@ -670,6 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e648fd50fcd8846bd74fe305fe21b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGold: 0
   isItem: 1
   isWeapon: 0
   isArmour: 0

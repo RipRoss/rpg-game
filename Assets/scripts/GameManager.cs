@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetFloat("Player_Position_x", PlayerController.instance.transform.position.x);
         PlayerPrefs.SetFloat("Player_Position_y", PlayerController.instance.transform.position.y);
         PlayerPrefs.SetFloat("Player_Position_z", PlayerController.instance.transform.position.z);
+        PlayerPrefs.SetInt("Player_Gold", currentGold);
 
         for (int i = 0; i < itemsHeld.Length; i++)
         {
@@ -131,5 +132,7 @@ public class GameManager : MonoBehaviour
             itemsHeld = PlayerPrefsX.GetStringArray("itemsHeld");
             numberOfItems = PlayerPrefsX.GetIntArray("itemCounts");
         }
+
+        currentGold = PlayerPrefs.GetInt("Player_Gold");
     }
 }

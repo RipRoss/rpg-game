@@ -33,9 +33,16 @@ public class PickupItem : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            GameManager.instance.addItem(GetComponent<Item>().itemName);
+            if (GetComponent<Item>().isGold)
+            {
+                GameManager.instance.currentGold += GetComponent<Item>().amountToChange;
+                Inventory.instance.goldText.text = GameManager.instance.currentGold + "g";
+            } else
+            {
+                GameManager.instance.addItem(GetComponent<Item>().itemName);
+            }
 
-            GetComponent<Item>().gameObject.SetActive(false);
+            GetComponent<Item>().gameObject.SetActive(false); // this may cause issues with multiple items.. but should be good
             print(GetComponent<Item>().gameObject.name);
         }
     }

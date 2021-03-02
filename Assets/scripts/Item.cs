@@ -5,6 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [Header("Item Type")]
+    public bool isGold;
     public bool isItem;
     public bool isWeapon;
     public bool isArmour;
@@ -16,7 +17,7 @@ public class Item : MonoBehaviour
     public Sprite itemSprite;
 
     [Header("Item Details")]
-    public int amountToChange; // not used currently, placeholders for future
+    public int amountToChange;
     public bool affectHP, affectMP, affectMR, affectStr; // not used currently, placeholders for future
 
     [Header("Weapon/Armour Details")]

@@ -43,15 +43,15 @@ public class Inventory : MonoBehaviour
             {
                 open = true;
                 showItems();
-                //goldText.text = GameManager.instance.currentGold + "g";
                 inventory.SetActive(true);
             }
         }
 
     }
 
-    public void showItems() 
+    public void showItems()
     {
+        goldText.text = GameManager.instance.currentGold + "g";
         for (int i = 0; i < itemButtons.Length; i++)
         {
             itemButtons[i].itemAmount = i;
@@ -68,7 +68,7 @@ public class Inventory : MonoBehaviour
                 itemButtons[i].buttonImage.gameObject.SetActive(false);
                 itemButtons[i].amountText.text = "";
             }
-        }    
+        }
     }
 
     public void SelectItem(Item newItem)
