@@ -9,10 +9,6 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
     public bool spawned = false;
 
-    public int maxHealth = 10;
-    public int currentHealth;
-    public PlayerHealth healthBar;
-
     void Start()
     {
         if (instance == null)
@@ -24,25 +20,12 @@ public class PlayerController : MonoBehaviour
         }
         
         DontDestroyOnLoad(gameObject); // dont destroy the player
-        currentHealth = maxHealth;
-        //healthBar.SetMaxHealth(maxHealth);
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Q)) //Fake damage
-        {
-            TakeDamage(1);
-        }
-
-        if(Input.GetKeyDown(KeyCode.E)) //Fake heal
-        {
-            HealPlayer(1);
-        }
-
 
         Vector3 pos = transform.position;
 
@@ -71,24 +54,5 @@ public class PlayerController : MonoBehaviour
 
         transform.position = pos;
     }
-
-
-    void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        UpdateHealth();
-    }
-
-    void HealPlayer(int healAmount)
-    {
-        currentHealth += healAmount;
-        UpdateHealth();
-    }
-
-    void UpdateHealth()
-    {
-        healthBar.SetHealth(currentHealth);
-    }
-
 
 }
