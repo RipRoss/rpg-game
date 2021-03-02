@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
     public void SaveData()
     {
         SaveSystem.SavePlayer();
-        PlayerPrefs.SetString("Current_Scene", SceneManager.GetActiveScene().name);
+        //PlayerPrefs.SetString("Current_Scene", SceneManager.GetActiveScene().name);
     }
 
     public void LoadData()
@@ -143,14 +143,14 @@ public class GameManager : MonoBehaviour
             currentGold = data.gold;
             itemsHeld = data.itemsHeld;
             numberOfItems = data.numberOfItems;
-            PlayerController.instance.areaTransitionName = data.areaTransitionName;
+            PlayerController.instance.sceneName = data.sceneName;
             print("data.position " + data.position[0]);
             print("data.position " + data.position[1]);
             print("data.position " + data.position[2]);
 
             if (!PlayerController.instance.spawned)
             {
-                SceneManager.LoadScene(PlayerController.instance.areaTransitionName);
+                SceneManager.LoadScene(data.sceneName); // i think we need to do this at the main menu stage
                 PlayerController.instance.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
                 PlayerController.instance.spawned = true;
             }

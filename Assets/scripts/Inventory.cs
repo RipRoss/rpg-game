@@ -57,7 +57,6 @@ public class Inventory : MonoBehaviour
             itemButtons[i].itemAmount = i;
 
             print(itemButtons[i].amountText);
-
             if (GameManager.instance.itemsHeld[i] != "" && GameManager.instance.numberOfItems[i] != 0)
             {
                 itemButtons[i].buttonImage.gameObject.SetActive(true);
@@ -75,16 +74,13 @@ public class Inventory : MonoBehaviour
     {
         activeItem = newItem;
 
-        /*if (activeItem.isItem)
+        if (activeItem.isItem)
         {
-            // it's an item
+            if (activeItem.affectHP)
+            {
+                PlayerController.instance.currentHealth += 100;
+            }
         }
-
-        if (activeItem.isWeapon || activeItem.isArmour)
-        {
-            // its a weapon
-        }
-    */
         itemName.text = activeItem.itemName;
         itemDescription.text = activeItem.description;
     }

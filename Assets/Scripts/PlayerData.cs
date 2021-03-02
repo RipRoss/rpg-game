@@ -15,7 +15,7 @@ public class PlayerData
     public string[] itemsHeld;
     public float[] position;
 
-    public string areaTransitionName;
+    public string sceneName;
 
     public PlayerData ()
     {
@@ -24,7 +24,7 @@ public class PlayerData
         health = 100;
         mana = 100;
         energy = 100;
-        areaTransitionName = SceneManager.GetActiveScene().name;
+        sceneName = SceneManager.GetActiveScene().name;
         itemsHeld = GameManager.instance.itemsHeld;
         numberOfItems = GameManager.instance.numberOfItems;
 

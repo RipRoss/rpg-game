@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public float panSpeed;
     public static PlayerController instance;
     public string areaTransitionName;
+    public string sceneName;
     public bool canMove = true;
     public bool spawned = false;
 
