@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
     public string areaTransitionName;
     public bool canMove = true;
+    public bool spawned = false;
 
     public int maxHealth = 10;
     public int currentHealth;
@@ -23,9 +24,6 @@ public class PlayerController : MonoBehaviour
         }
         
         DontDestroyOnLoad(gameObject); // dont destroy the player
-
-        instance.transform.position = new Vector3(PlayerPrefs.GetFloat("Player_Position_x"), PlayerPrefs.GetFloat("Player_Position_y"), PlayerPrefs.GetFloat("Player_Position_z"));
-
         currentHealth = maxHealth;
         //healthBar.SetMaxHealth(maxHealth);
     }

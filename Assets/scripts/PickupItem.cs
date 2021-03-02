@@ -42,7 +42,6 @@ public class PickupItem : MonoBehaviour
             }
 
             GetComponent<Item>().gameObject.SetActive(false); // this may cause issues with multiple items.. but should be good
-            print(GetComponent<Item>().gameObject.name);
         }
     }
 
