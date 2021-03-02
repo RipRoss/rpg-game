@@ -23,4 +23,13 @@ public class Item : MonoBehaviour
     [Header("Weapon/Armour Details")]
     public int weaponStr; // not used currently, placeholders for future
     public int armourStr; // not used currently, placeholders for future
+
+    public void Use()
+    {
+        if (affectHP)
+        {
+            // we can do maxHealth - currrentHealth to work out the difference. Ie, we never want to go above 100 health. 
+            PlayerController.instance.currentHealth += 100;
+        }
+    }
 }
