@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
 
     public int currentGold;
 
+    void OnApplicationQuit()
+    {
+        SaveData();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -150,6 +155,7 @@ public class GameManager : MonoBehaviour
 
             if (!PlayerController.instance.spawned)
             {
+                print(data.sceneName);
                 SceneManager.LoadScene(data.sceneName); // i think we need to do this at the main menu stage
                 PlayerController.instance.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
                 PlayerController.instance.spawned = true;
