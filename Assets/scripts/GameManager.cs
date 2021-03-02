@@ -156,8 +156,6 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-
-        Inventory.instance.showItems();
     }
 
     public void addMoney(int amount)

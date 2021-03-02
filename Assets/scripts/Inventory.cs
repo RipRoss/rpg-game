@@ -51,6 +51,7 @@ public class Inventory : MonoBehaviour
 
     public void showItems()
     {
+        GameManager.instance.SortItems();
         goldText.text = GameManager.instance.currentGold + "g";
         for (int i = 0; i < itemButtons.Length; i++)
         {
