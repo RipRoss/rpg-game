@@ -18709,6 +18709,7 @@ MonoBehaviour:
   panSpeed: 5
   areaTransitionName: 
   canMove: 1
+  spawned: 0
   maxHealth: 10
   currentHealth: 0
   healthBar: {fileID: 1221248209}
