@@ -16,10 +16,17 @@ public class Inventory : MonoBehaviour
     public Text goldText;
     public bool open;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // dont destroy the player
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

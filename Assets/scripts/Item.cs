@@ -22,16 +22,4 @@ public class Item : MonoBehaviour
     [Header("Weapon/Armour Details")]
     public int weaponStr; // not used currently, placeholders for future
     public int armourStr; // not used currently, placeholders for future
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
