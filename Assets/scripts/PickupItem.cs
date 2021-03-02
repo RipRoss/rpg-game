@@ -71,6 +71,9 @@ public class PickupItem : MonoBehaviour
             if (PlayerPrefs.HasKey("StartScene_" + pickups[i].itemName + "_" + i))
             {
                 intValueToSet = PlayerPrefs.GetInt("StartScene_" + pickups[i].itemName + "_" + i);
+            } else
+            {
+                intValueToSet = 1;
             }
 
             if (intValueToSet == 0)
