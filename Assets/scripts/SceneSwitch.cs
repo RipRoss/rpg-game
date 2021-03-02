@@ -24,7 +24,7 @@ public class SceneSwitch : MonoBehaviour
                 PickupItem.instance.SavePickupData();
             }
 
-            GameManager.instance.SaveData();
+            // GameManager.instance.SaveData();
 
             anim.SetTrigger("Fade");
             PlayerController.instance.canMove = false;

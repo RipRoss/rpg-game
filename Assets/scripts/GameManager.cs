@@ -25,8 +25,10 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        InvokeRepeating("SaveData", 0.0f, 10.0f);
+
         LoadData();
-        SaveData();
     }
 
     // Update is called once per frame
@@ -129,32 +131,29 @@ public class GameManager : MonoBehaviour
 
     public void SaveData()
     {
+        SaveSystem.SavePlayer();
         PlayerPrefs.SetString("Current_Scene", SceneManager.GetActiveScene().name);
-        PlayerPrefs.SetFloat("Player_Position_x", PlayerController.instance.transform.position.x);
-        PlayerPrefs.SetFloat("Player_Position_y", PlayerController.instance.transform.position.y);
-        PlayerPrefs.SetFloat("Player_Position_z", PlayerController.instance.transform.position.z);
-        PlayerPrefs.SetInt("Player_Gold", currentGold);
-
-        for (int i = 0; i < itemsHeld.Length; i++)
-        {
-            PlayerPrefsX.SetStringArray("itemsHeld", itemsHeld);
-            PlayerPrefsX.SetIntArray("itemCounts", numberOfItems);
-            print(itemsHeld[i]);
-        }
     }
 
     public void LoadData()
     {
-        if (PlayerPrefs.HasKey("itemsHeld") && PlayerPrefs.HasKey("itemCounts"))
+        PlayerData data = SaveSystem.LoadPlayer();
+        if (data != null)
         {
-            itemsHeld = PlayerPrefsX.GetStringArray("itemsHeld");
-            numberOfItems = PlayerPrefsX.GetIntArray("itemCounts");
-        }
+            currentGold = data.gold;
+            itemsHeld = data.itemsHeld;
+            numberOfItems = data.numberOfItems;
+            PlayerController.instance.areaTransitionName = data.areaTransitionName;
+            print("data.position " + data.position[0]);
+            print("data.position " + data.position[1]);
+            print("data.position " + data.position[2]);
 
-        if (PlayerPrefs.HasKey("Player_Gold"))
-        {
-            currentGold = PlayerPrefs.GetInt("Player_Gold");
-            print("helloworld");
-        }        
+            if (!PlayerController.instance.spawned)
+            {
+                SceneManager.LoadScene(PlayerController.instance.areaTransitionName);
+                PlayerController.instance.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
+                PlayerController.instance.spawned = true;
+            }
+        }
     }
 }
