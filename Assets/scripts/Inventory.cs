@@ -56,8 +56,7 @@ public class Inventory : MonoBehaviour
         {
             itemButtons[i].itemAmount = i;
 
-            print(itemButtons[i].amountText);
-            if (GameManager.instance.itemsHeld[i] != "" && GameManager.instance.numberOfItems[i] != 0)
+            if (GameManager.instance.itemsHeld[i] != "")
             {
                 itemButtons[i].buttonImage.gameObject.SetActive(true);
                 itemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[i]).itemSprite;
@@ -78,7 +77,7 @@ public class Inventory : MonoBehaviour
         {
             if (activeItem.affectHP)
             {
-                PlayerController.instance.currentHealth += 100;
+                GameManager.instance.RemoveItem(activeItem.itemName);
             }
         }
         itemName.text = activeItem.itemName;

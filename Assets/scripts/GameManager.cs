@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            removeItem("Iron Armour");
+            RemoveItem("Iron Armour");
         }
 
         if (Input.GetKeyDown(KeyCode.O))
@@ -62,6 +62,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             removeMoney(100);
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            SortItems();
         }
     }
 
@@ -108,14 +113,47 @@ public class GameManager : MonoBehaviour
         Inventory.instance.showItems();
     }
 
-    public void removeItem(string itemName)
+    public void RemoveItem(string itemName)
     {
         for (int i = 0; i < itemsHeld.Length; i++)
         {
             if (itemsHeld[i] == itemName)
             {
                 numberOfItems[i]--;
-                break;
+
+                if (numberOfItems[i] <= 0)
+                {
+                    itemsHeld[i] = "";
+                }
+            }
+        }
+
+        Inventory.instance.showItems();
+    }
+
+    public void SortItems()
+    {
+        bool itemAfterSpace = true;
+
+        while (itemAfterSpace)
+        {
+            itemAfterSpace = false;
+            for (int i = 0; i < itemsHeld.Length - 1; i++)
+            {
+                if (itemsHeld[i] == "")
+                {
+                    print("this is what it is : " + itemsHeld[i]);
+                    itemsHeld[i] = itemsHeld[i + 1];
+                    itemsHeld[i + 1] = "";
+
+                    numberOfItems[i] = numberOfItems[i + 1];
+                    numberOfItems[i + 1] = 0;
+
+                    if (itemsHeld[i] != "")
+                    {
+                        itemAfterSpace = true;
+                    }
+                }
             }
         }
 
