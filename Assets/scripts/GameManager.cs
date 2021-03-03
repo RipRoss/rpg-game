@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     void OnApplicationQuit()
     {
         SaveData();
+        PickupItem.instance.SavePickupData();
     }
 
     // Start is called before the first frame update
@@ -131,6 +132,17 @@ public class GameManager : MonoBehaviour
         Inventory.instance.showItems();
     }
 
+    public void DropItem(Item item)
+    {
+        Item[] pUps = PickupItem.instance.pickups;
+        for (int i = 0; i < pUps.Length; i ++)
+        {
+            GameObject go = Instantiate(pUps[i].gameObject);
+
+            go.transform.position = PlayerController.instance.transform.position;
+        }
+    }
+
     public void SortItems()
     {
         bool itemAfterSpace = true;
@@ -142,7 +154,6 @@ public class GameManager : MonoBehaviour
             {
                 if (itemsHeld[i] == "")
                 {
-                    print("this is what it is : " + itemsHeld[i]);
                     itemsHeld[i] = itemsHeld[i + 1];
                     itemsHeld[i + 1] = "";
 
@@ -173,7 +184,6 @@ public class GameManager : MonoBehaviour
     public void SaveData()
     {
         SaveSystem.SavePlayer();
-        //PlayerPrefs.SetString("Current_Scene", SceneManager.GetActiveScene().name);
     }
 
     public void LoadData()
@@ -185,13 +195,9 @@ public class GameManager : MonoBehaviour
             itemsHeld = data.itemsHeld;
             numberOfItems = data.numberOfItems;
             PlayerController.instance.sceneName = data.sceneName;
-            print("data.position " + data.position[0]);
-            print("data.position " + data.position[1]);
-            print("data.position " + data.position[2]);
 
             if (!PlayerController.instance.spawned)
             {
-                print(data.sceneName);
                 SceneManager.LoadScene(data.sceneName); // i think we need to do this at the main menu stage
                 PlayerController.instance.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
                 PlayerController.instance.spawned = true;

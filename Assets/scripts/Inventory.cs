@@ -73,15 +73,6 @@ public class Inventory : MonoBehaviour
     public void SelectItem(Item newItem)
     {
         activeItem = newItem;
-
-        if (activeItem.isItem)
-        {
-            if (activeItem.affectHP)
-            {
-                GameManager.instance.RemoveItem(activeItem.itemName);
-            }
-        }
-        itemName.text = activeItem.itemName;
-        itemDescription.text = activeItem.description;
+        newItem.Use();
     }
 }

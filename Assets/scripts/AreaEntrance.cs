@@ -13,8 +13,6 @@ public class AreaEntrance : MonoBehaviour
         {
             PlayerController.instance.canMove = true;
             PlayerController.instance.transform.position = transform.position;
-
-            print(transform.position);
         }
     }
 }

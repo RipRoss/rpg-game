@@ -9,9 +9,8 @@ public class PlayerData
     public int health;
     public int mana;
     public int energy;
-    public int gold = 0; 
+    public int gold = 0;
     public int[] numberOfItems;
-
     public string[] itemsHeld;
     public float[] position;
 

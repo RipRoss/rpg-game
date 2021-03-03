@@ -7,12 +7,13 @@ public static class SaveSystem
     {
         string path = Application.persistentDataPath + "/our_game.gamefile";
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(path, FileMode.Create);
+        using (FileStream stream = new FileStream(path, FileMode.OpenOrCreate))
+        {
+            PlayerData data = new PlayerData();
 
-        PlayerData data = new PlayerData();
-
-        formatter.Serialize(stream, data);
-        stream.Close();
+            formatter.Serialize(stream, data);
+            stream.Close();
+        }        
     }
 
     public static PlayerData LoadPlayer()
@@ -21,15 +22,47 @@ public static class SaveSystem
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+            using (FileStream stream = new FileStream(path, FileMode.Open))
+            {
+                PlayerData data = formatter.Deserialize(stream) as PlayerData;
 
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
-
-            stream.Close();
-            return data;
+                stream.Close();
+                return data;
+            }
         } else
         {
             // default 
+            return null;
+        }
+    }
+
+    public static void SaveWorld()
+    {
+        string path = Application.persistentDataPath + "/our_world.gamefile";
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        WorldData data = new WorldData();
+
+        formatter.Serialize(stream, data);
+
+        stream.Close();
+    }
+
+    public static WorldData LoadWorld() 
+    {
+        string path = Application.persistentDataPath + "/our_world.gamefile";
+        BinaryFormatter formatter = new BinaryFormatter();
+
+        if (File.Exists(path))
+        {
+            using (FileStream stream = new FileStream(path, FileMode.Open))
+            {
+                WorldData data = formatter.Deserialize(stream) as WorldData;
+                return data;
+            }
+        } else
+        {
             return null;
         }
     }

@@ -45,50 +45,54 @@ public class PickupItem : MonoBehaviour
         }
     }
 
+
+    // switch this over to use the new system as we no longer save things in 'PlayerPrefs'
     public void SavePickupData()
     {
         for (int i = 0; i < pickups.Length; i++)
         {
             if (pickups[i].gameObject.activeSelf)
             {
-                PlayerPrefs.SetInt("StartScene_" + pickups[i].itemName + "_" + i, 1);
+                // active
                 pickupsToShow[i] = true;
-            } else {
+            } else
+            {
+                // not active
                 pickupsToShow[i] = false;
-                PlayerPrefs.SetInt("StartScene_" + pickups[i].itemName + "_" + i, 0);
             }
         }
+
+        SaveSystem.SaveWorld();
     }
 
     public void LoadPickUpData()
     {
-        for (int i = 0; i < pickups.Length; i++)
+        WorldData data = SaveSystem.LoadWorld();
+
+        if (data != null)
         {
-            int intValueToSet = 0;
+            pickupsToShow = data.pickupsToShow;
 
-            if (PlayerPrefs.HasKey("StartScene_" + pickups[i].itemName + "_" + i))
+            if (pickups.Length > 1)
             {
-                intValueToSet = PlayerPrefs.GetInt("StartScene_" + pickups[i].itemName + "_" + i);
-            } else
-            {
-                intValueToSet = 1;
+                for (int i = 0; i < pickupsToShow.Length; i++)
+                {
+                    if (pickupsToShow[i])
+                    {
+                        pickups[i].gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        pickups[i].gameObject.SetActive(false);
+                    }
+                }
             }
-
-            if (intValueToSet == 0)
-            {
-                pickups[i].gameObject.SetActive(false);
-                pickupsToShow[i] = false;
-            } else
-            {
-                pickups[i].gameObject.SetActive(true);
-                pickupsToShow[i] = true;
-            }
-        }
+        }        
     }
 
     public void SetAllTrue()
     {
-        for (int i = 0; i < pickups.Length; i++)
+        for (int i = 0; i < pickups.Length - 1; i++)
         {
 
             if (PlayerPrefs.HasKey("StartScene_" + pickups[i].itemName + "_" + i))

@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
         DontDestroyOnLoad(gameObject); // dont destroy the player
     }
 
@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Vector3 pos = transform.position;
 
         if (canMove)
