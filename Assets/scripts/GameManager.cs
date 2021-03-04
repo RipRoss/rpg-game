@@ -135,12 +135,26 @@ public class GameManager : MonoBehaviour
     public void DropItem(Item item)
     {
         Item[] pUps = PickupItem.instance.pickups;
+        Pickup.canPickUp = false;
         for (int i = 0; i < pUps.Length; i ++)
         {
-            GameObject go = Instantiate(pUps[i].gameObject);
-
-            go.transform.position = PlayerController.instance.transform.position;
+            if (pUps[i].itemName == item.itemName)
+            {
+                Vector3 randomDir = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)).normalized;
+                Vector3 dropPos = new Vector3(PlayerController.instance.transform.position.x, PlayerController.instance.transform.position.y, PlayerController.instance.transform.position.z);
+                GameObject go = Instantiate(pUps[i].gameObject);
+                go.SetActive(true);
+                go.transform.position = dropPos + randomDir;
+                go.GetComponent<Rigidbody2D>().AddForce(randomDir * 1f, ForceMode2D.Impulse);
+                //RemoveItem(item.itemName);
+                Invoke("SetCanPickUp", 1);
+            }            
         }
+    }
+
+    private void SetCanPickUp()
+    {
+        Pickup.canPickUp = true;
     }
 
     public void SortItems()

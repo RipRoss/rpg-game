@@ -40,7 +40,7 @@ public static class SaveSystem
     {
         string path = Application.persistentDataPath + "/our_world.gamefile";
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(path, FileMode.Create);
+        FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
 
         WorldData data = new WorldData();
 

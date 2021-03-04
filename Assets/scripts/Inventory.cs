@@ -70,9 +70,15 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void DropItem()
+    {
+        GameManager.instance.DropItem(activeItem);
+    }
+
     public void SelectItem(Item newItem)
     {
         activeItem = newItem;
+        print("new active item is " + activeItem.itemName);
         newItem.Use();
     }
 }

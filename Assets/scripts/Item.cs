@@ -32,9 +32,4 @@ public class Item : MonoBehaviour
             PlayerController.instance.currentHealth += 100;
         }
     }
-
-    public void Drop()
-    {
-
-    }
 }

@@ -29,22 +29,6 @@ public class PickupItem : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Player")
-        {
-            if (GetComponent<Item>().isGold)
-            {
-                GameManager.instance.addMoney(GetComponent<Item>().amountToChange);
-            } else
-            {
-                GameManager.instance.addItem(GetComponent<Item>().itemName);
-            }
-
-            GetComponent<Item>().gameObject.SetActive(false); // this may cause issues with multiple items.. but should be good
-        }
-    }
-
 
     // switch this over to use the new system as we no longer save things in 'PlayerPrefs'
     public void SavePickupData()

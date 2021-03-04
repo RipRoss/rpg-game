@@ -9,19 +9,6 @@ public class ItemButton : MonoBehaviour
     public Text amountText;
     public int itemAmount;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Press()
     {
         if (GameManager.instance.itemsHeld[itemAmount] != "") {
