@@ -78,7 +78,7 @@ public class Inventory : MonoBehaviour
     public void SelectItem(Item newItem)
     {
         activeItem = newItem;
-        print("new active item is " + activeItem.itemName);
+        print("active item is : " + activeItem);
         newItem.Use();
     }
 }

@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
                 if (numberOfItems[i] <= 0)
                 {
                     itemsHeld[i] = "";
+                    Inventory.instance.activeItem = null;
                 }
             }
         }
@@ -146,9 +147,9 @@ public class GameManager : MonoBehaviour
                 go.SetActive(true);
                 go.transform.position = dropPos + randomDir;
                 go.GetComponent<Rigidbody2D>().AddForce(randomDir * 1f, ForceMode2D.Impulse);
-                //RemoveItem(item.itemName);
-                Invoke("SetCanPickUp", 1);
-            }            
+                RemoveItem(item.itemName);
+                Invoke("SetCanPickUp", .5f);
+            }        
         }
     }
 
