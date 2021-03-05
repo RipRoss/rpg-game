@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -65,10 +67,10 @@ public class GameManager : MonoBehaviour
             removeMoney(100);
         }
 
-        if (Input.GetKeyDown(KeyCode.N))
+        /*if (Input.GetKeyDown(KeyCode.N))
         {
             SortItems();
-        }
+        }*/
     }
 
     public Item GetItemDetails(string itemToGrab)
@@ -84,22 +86,32 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-    public void addItem(string itemName)
+    public void addItem(string itemName) 
     {
         int newItemPosition = 0;
         bool foundSpace = false;
+        bool foundItem = itemsHeld.Contains(itemName);
 
-        for (int i = 0; i < itemsHeld.Length; i++)
+
+        // this finds first available space, even if t here's 
+        if (!foundItem)
         {
-            if (itemsHeld[i] == "" || itemsHeld[i] == itemName)
+            for (int i = 0; i < itemsHeld.Length; i++)
             {
-                newItemPosition = i;
-                foundSpace = true;
-                break;
+                if (itemsHeld[i] == "")
+                {
+                    newItemPosition = i;
+                    foundSpace = true;
+                    break;
+                }
             }
+        } else
+        {
+            newItemPosition = Array.IndexOf(itemsHeld, itemName);
         }
+        
 
-        if (foundSpace)
+        if (foundSpace || foundItem)
         {
             for (int i = 0; i < referenceItems.Length; i++) { 
                 if (referenceItems[i].itemName == itemName)
@@ -127,13 +139,14 @@ public class GameManager : MonoBehaviour
                     itemsHeld[i] = "";
                     Inventory.instance.activeItem = null;
                 }
+                break;
             }
         }
 
         Inventory.instance.showItems();
     }
 
-    public void DropItem(Item item)
+    public void DropItem(Item item, bool dragDrop)
     {
         Item[] pUps = PickupItem.instance.pickups;
         Pickup.canPickUp = false;
@@ -141,12 +154,26 @@ public class GameManager : MonoBehaviour
         {
             if (pUps[i].itemName == item.itemName)
             {
-                Vector3 randomDir = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)).normalized;
+                Vector3 direction;
                 Vector3 dropPos = new Vector3(PlayerController.instance.transform.position.x, PlayerController.instance.transform.position.y, PlayerController.instance.transform.position.z);
+                float multiply;
+
+                if (dragDrop)
+                {
+                    Vector3 mousePos = Input.mousePosition;
+                    Vector3 dir = Camera.main.ScreenToWorldPoint(mousePos);
+                    direction = dir - dropPos;
+                    multiply = .6f;
+                } else
+                {
+                    direction = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)).normalized;
+                    multiply = 2f;
+                }
+                
                 GameObject go = Instantiate(pUps[i].gameObject);
                 go.SetActive(true);
-                go.transform.position = dropPos + randomDir;
-                go.GetComponent<Rigidbody2D>().AddForce(randomDir * 1f, ForceMode2D.Impulse);
+                go.transform.position = dropPos;
+                go.GetComponent<Rigidbody2D>().AddForce(direction * multiply, ForceMode2D.Impulse);
                 RemoveItem(item.itemName);
                 Invoke("SetCanPickUp", .5f);
             }        
@@ -182,6 +209,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        Inventory.instance.showItems();
     }
 
     public void addMoney(int amount)

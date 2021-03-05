@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
 
     public void showItems()
     {
-        GameManager.instance.SortItems();
+        //GameManager.instance.SortItems();
         goldText.text = GameManager.instance.currentGold + "g";
         for (int i = 0; i < itemButtons.Length; i++)
         {
@@ -72,7 +72,7 @@ public class Inventory : MonoBehaviour
 
     public void DropItem()
     {
-        GameManager.instance.DropItem(activeItem);
+        GameManager.instance.DropItem(activeItem, false);
     }
 
     public void UseItem()
