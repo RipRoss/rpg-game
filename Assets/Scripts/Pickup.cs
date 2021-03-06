@@ -12,7 +12,7 @@ public class Pickup : MonoBehaviour
         {
             if (canPickUp)
             {
-                GameManager.instance.addItem(GetComponent<Item>().itemName);
+                GameManager.instance.addItem(GetComponent<Item>());
                 GetComponent<Item>().gameObject.SetActive(false);
             }            
         }

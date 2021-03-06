@@ -8,6 +8,11 @@ using UnityEngine.EventSystems;
 
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
+    /* TODO : 
+        We have to add a collider to the items to ensure they don't end up places the player can't get as there's an element of gravity involved.
+     
+     */
+
     [SerializeField] private Canvas canvas;
     private RectTransform rectTransform;
     private SpriteRenderer sRenderer;
@@ -70,6 +75,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
                 GameObject canvas = go.transform.Find("DropCanvas").gameObject;
                 DropPanel.item = replicatedItem;
                 DropPanel.wasDragged = true;
+                DropPanel.wasDropped = true;
                 canvas.SetActive(true);
             } else
             {
@@ -84,6 +90,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnDrop(PointerEventData eventData)
     {
+        // TODO : We need to make sure we hide the visible drop selector when drop is selected, so that it can be respawned for use later on.
+
         if (eventData.pointerDrag != null)
         {
             if (eventData.pointerEnter.transform.parent.name != "ItemButtons")

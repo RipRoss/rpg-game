@@ -68,12 +68,16 @@ public class GameManager : MonoBehaviour
         return amount;
     }
 
-    public void addItem(string itemName) 
+    public void addItem(Item item) 
     {
         int newItemPosition = 0;
         bool foundSpace = false;
-        bool foundItem = itemsHeld.Contains(itemName);
+        bool foundItem = itemsHeld.Contains(item.itemName);
 
+        if (item.isGold)
+        {
+            addMoney(item.amountToChange);
+        }
 
         // this finds first available space, even if t here's 
         if (!foundItem)
@@ -89,16 +93,16 @@ public class GameManager : MonoBehaviour
             }
         } else
         {
-            newItemPosition = Array.IndexOf(itemsHeld, itemName);
+            newItemPosition = Array.IndexOf(itemsHeld, item.itemName);
         }
         
 
         if (foundSpace || foundItem)
         {
             for (int i = 0; i < referenceItems.Length; i++) { 
-                if (referenceItems[i].itemName == itemName)
+                if (referenceItems[i].itemName == item.itemName)
                 {
-                    itemsHeld[newItemPosition] = itemName;
+                    itemsHeld[newItemPosition] = item.itemName;
                     numberOfItems[newItemPosition]++;
                     break;
                 }
