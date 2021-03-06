@@ -11,3 +11,6 @@ UnityPlayer.dll
 .vsconfig
 *.csproj
 /.vs/
+*.exe
+*.user
+rpg-game.sln
