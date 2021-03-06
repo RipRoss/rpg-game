@@ -10,3 +10,4 @@ UnityCrashHandler32.exe
 UnityPlayer.dll
 .vsconfig
 *.csproj
+/.vs/
