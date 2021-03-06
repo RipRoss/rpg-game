@@ -3,6 +3,7 @@ using System.Windows.Input;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
@@ -10,8 +11,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     [SerializeField] private Canvas canvas;
     private RectTransform rectTransform;
     private SpriteRenderer sRenderer;
-    private static ItemButton itemSlotDraggedFrom;
-    private static Item replicatedItem;
+    public static ItemButton itemSlotDraggedFrom;
+    public static Item replicatedItem;
+    public static ItemButton itemMovingTo;
     private static bool ctrlPressed = false;
 
     private void Update()
@@ -19,14 +21,16 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         if (Input.GetKey(KeyCode.LeftControl))
         {
             ctrlPressed = true;
-            print("helloworld");
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            ctrlPressed = false;
         }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBeginDrag");
-
         itemSlotDraggedFrom = eventData.pointerDrag.GetComponent<ItemButton>();
 
         if (itemSlotDraggedFrom.amountText.text != "")
@@ -58,7 +62,19 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
         if (eventData.pointerEnter == null)
         {
-            GameManager.instance.DropItem(replicatedItem, true);     
+            int amountToDrop = GameManager.instance.numberOfItems[eventData.pointerDrag.GetComponent<ItemButton>().itemAmount];
+
+            if (ctrlPressed)
+            {
+                GameObject go = GameObject.Find("DropUI");
+                GameObject canvas = go.transform.Find("DropCanvas").gameObject;
+                DropPanel.item = replicatedItem;
+                DropPanel.wasDragged = true;
+                canvas.SetActive(true);
+            } else
+            {
+                GameManager.instance.DropItem(replicatedItem, true, amountToDrop);
+            }            
         }
     }
 
@@ -72,38 +88,56 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         {
             if (eventData.pointerEnter.transform.parent.name != "ItemButtons")
             {
-                print("this is the parent " + eventData.pointerEnter.transform.parent.name);
-                MoveItemInInventory(eventData.pointerEnter.transform.parent.GetComponent<ItemButton>());
+                itemMovingTo = eventData.pointerEnter.transform.parent.GetComponent<ItemButton>();
+                MoveItemInInventory(itemMovingTo);
             } else
             {
-                print("this is not the parent " + eventData.pointerEnter.name);
+                itemMovingTo = eventData.pointerEnter.GetComponent<ItemButton>();
                 MoveItemInInventory(eventData.pointerEnter.GetComponent<ItemButton>());
             }            
         }
     }
 
-    private void MoveItemInInventory(ItemButton movedtoItemSlot)
+    public static void MoveItemInInventory(ItemButton movedtoItemSlot, bool selectAmount = false, int amountToMove = 0)
     {
         GameManager gm = GameManager.instance;
 
-        // Get the ItemButton component for the item we have just dropped off at.
-        // Use the itemAmount to add to itemsHeld and numberOfItems below
+        if (ctrlPressed)
+        {
+            // show the UI for how many you want to switch over
+            GameObject go = GameObject.Find("DropUI");
+            GameObject canvas = go.transform.Find("DropCanvas").gameObject;
+            DropPanel.item = replicatedItem;
+            canvas.SetActive(true);
+            return;
+        }
 
         if (gm.itemsHeld[movedtoItemSlot.itemAmount] != "")
         {
             if (gm.itemsHeld[movedtoItemSlot.itemAmount] == replicatedItem.itemName)
             {
-                // loop over the count of items (amountText on the item.)
-                // subtract for each one... or you can remove the 
+                int amount = Int32.Parse(itemSlotDraggedFrom.amountText.text);
 
-                // add to the item, rather than replace the item
-                gm.numberOfItems[movedtoItemSlot.itemAmount] = Int32.Parse(itemSlotDraggedFrom.amountText.text);
+                if (!selectAmount)
+                {
+                    gm.numberOfItems[itemSlotDraggedFrom.itemAmount] = 0;
+                    gm.itemsHeld[itemSlotDraggedFrom.itemAmount] = "";
+                } else
+                {
+                    amount = amountToMove;
+                }
 
-                gm.numberOfItems[itemSlotDraggedFrom.itemAmount] = 0;
-                gm.itemsHeld[itemSlotDraggedFrom.itemAmount] = "";
+                gm.numberOfItems[movedtoItemSlot.itemAmount] += amount;
             }
             else
             {
+                // here, instead of switching the item for the exact same one, we need to fine the first empty one and put the item there.
+                // if we're splitting a stack of 10 in 2, and want to put the other 5 in a position already occupied by something else, 
+                // then we need to put the item that was there, in another position. Preferably the first free space.
+
+                // BUG HERE : there is a bug here due to the above - implement asap. Whenever you ctrl drag an item from one inv slot to another and 
+                // the item type is the same - ie bronze armour, it won't subtract from the previous slot but would add to the new slot. Giving you double.
+
                 string movedFromItemName = gm.itemsHeld[itemSlotDraggedFrom.itemAmount];
                 string movedToItemName = gm.itemsHeld[movedtoItemSlot.itemAmount];
                 int movedFromAmount = gm.numberOfItems[itemSlotDraggedFrom.itemAmount];
@@ -117,14 +151,22 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             }
         } else
         {
+            int amount = Int32.Parse(itemSlotDraggedFrom.GetComponent<ItemButton>().amountText.text);
+
+            if (!selectAmount)
+            {
+                gm.numberOfItems[itemSlotDraggedFrom.itemAmount] = 0;
+                gm.itemsHeld[itemSlotDraggedFrom.itemAmount] = "";
+            }
+            else
+            {
+                gm.numberOfItems[itemSlotDraggedFrom.itemAmount] -= amountToMove;
+                amount = amountToMove;
+            }
+
             // just add a new one
             gm.itemsHeld[movedtoItemSlot.itemAmount] = replicatedItem.itemName;
-            print(Int32.Parse(itemSlotDraggedFrom.amountText.text));
-            gm.numberOfItems[movedtoItemSlot.itemAmount] = Int32.Parse(itemSlotDraggedFrom.GetComponent<ItemButton>().amountText.text);
-
-            // remove the items
-            gm.itemsHeld[itemSlotDraggedFrom.itemAmount] = "";
-            gm.numberOfItems[itemSlotDraggedFrom.itemAmount] = 0;
+            gm.numberOfItems[movedtoItemSlot.itemAmount] = amount;
         }
 
         Inventory.instance.showItems();

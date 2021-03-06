@@ -39,40 +39,6 @@ public class GameManager : MonoBehaviour
         LoadData();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            addItem("Iron Armour");
-        }
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            RemoveItem("Iron Armour");
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            SaveData();
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            LoadData();
-        }
-
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            removeMoney(100);
-        }
-
-        /*if (Input.GetKeyDown(KeyCode.N))
-        {
-            SortItems();
-        }*/
-    }
-
     public Item GetItemDetails(string itemToGrab)
     {
         for (int i = 0; i < referenceItems.Length; i++)
@@ -84,6 +50,22 @@ public class GameManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    private int GetAmountInInventory(string itemName)
+    {
+        int amount = 0;
+
+        for (int i = 0; i < itemsHeld.Length; i++)
+        {
+            if (itemsHeld[i] == itemName)
+            {
+                // this is the item we want to return the count for.
+                amount += numberOfItems[i];
+            }
+        }
+
+        return amount;
     }
 
     public void addItem(string itemName) 
@@ -126,27 +108,41 @@ public class GameManager : MonoBehaviour
         Inventory.instance.showItems();
     }
 
-    public void RemoveItem(string itemName)
+    public void RemoveItem(string itemName, int amountToRemove)
     {
+        /*
+         Loop over the items held
+         if the item we are trying to remove, equals the item that we are trying to get
+         either set the value to 0, if it's all of them
+         - amountToRemove if the value of that is not 0.
+         */
+
+
         for (int i = 0; i < itemsHeld.Length; i++)
         {
             if (itemsHeld[i] == itemName)
             {
-                numberOfItems[i]--;
-
-                if (numberOfItems[i] <= 0)
+                if (amountToRemove == 0)
                 {
                     itemsHeld[i] = "";
-                    Inventory.instance.activeItem = null;
+                    numberOfItems[i] = 0;
                 }
-                break;
+                else
+                {
+                    numberOfItems[i] -= amountToRemove;
+
+                    if (numberOfItems[i] <= 0)
+                    {
+                        itemsHeld[i] = "";
+                    }
+                }
             }
         }
 
         Inventory.instance.showItems();
     }
 
-    public void DropItem(Item item, bool dragDrop)
+    public void DropItem(Item item, bool dragDrop, int amountToDrop = 0)
     {
         Item[] pUps = PickupItem.instance.pickups;
         Pickup.canPickUp = false;
@@ -169,12 +165,31 @@ public class GameManager : MonoBehaviour
                     direction = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)).normalized;
                     multiply = 2f;
                 }
-                
-                GameObject go = Instantiate(pUps[i].gameObject);
-                go.SetActive(true);
-                go.transform.position = dropPos;
-                go.GetComponent<Rigidbody2D>().AddForce(direction * multiply, ForceMode2D.Impulse);
-                RemoveItem(item.itemName);
+                print("amount to drop " + amountToDrop);
+                if (amountToDrop == 0)
+                {
+                    // do all of them
+                    print(GetAmountInInventory(item.itemName));
+                    for (int x = 0; x < GetAmountInInventory(item.itemName); x++)
+                    {
+                        GameObject go = Instantiate(pUps[i].gameObject);
+                        go.SetActive(true);
+                        go.transform.position = dropPos;
+                        go.GetComponent<Rigidbody2D>().AddForce(direction * multiply, ForceMode2D.Impulse);
+                    }
+                } else
+                {
+                    // loop over amountToDrop here
+                    for (int x = 0; x < amountToDrop; x++)
+                    {
+                        GameObject go = Instantiate(pUps[i].gameObject);
+                        go.SetActive(true);
+                        go.transform.position = dropPos;
+                        go.GetComponent<Rigidbody2D>().AddForce(direction * multiply, ForceMode2D.Impulse);
+                    }
+                }                
+
+                RemoveItem(item.itemName, amountToDrop);
                 Invoke("SetCanPickUp", .5f);
             }        
         }

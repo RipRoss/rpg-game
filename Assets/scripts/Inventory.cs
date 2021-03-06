@@ -78,7 +78,7 @@ public class Inventory : MonoBehaviour
     public void UseItem()
     {
         activeItem.Use();
-        GameManager.instance.RemoveItem(activeItem.itemName);
+        GameManager.instance.RemoveItem(activeItem.itemName, 1);
     }
 
     public void SelectItem(Item newItem)
