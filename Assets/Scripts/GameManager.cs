@@ -191,8 +191,7 @@ public class GameManager : MonoBehaviour
                         go.transform.position = dropPos;
                         go.GetComponent<Rigidbody2D>().AddForce(direction * multiply, ForceMode2D.Impulse);
                     }
-                }                
-
+                }
                 RemoveItem(item.itemName, amountToDrop);
                 Invoke("SetCanPickUp", .5f);
             }        

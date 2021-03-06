@@ -80,7 +80,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             } else
             {
                 GameManager.instance.DropItem(replicatedItem, true, amountToDrop);
-            }            
+            }
+
+            Destroy(replicatedItem.gameObject);
         }
     }
 
@@ -90,7 +92,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnDrop(PointerEventData eventData)
     {
-        // TODO : We need to make sure we hide the visible drop selector when drop is selected, so that it can be respawned for use later on.
+        Destroy(replicatedItem.gameObject);
 
         if (eventData.pointerDrag != null)
         {
@@ -117,6 +119,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             GameObject canvas = go.transform.Find("DropCanvas").gameObject;
             DropPanel.item = replicatedItem;
             canvas.SetActive(true);
+            Destroy(replicatedItem.gameObject);
             return;
         }
 
@@ -139,17 +142,13 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             }
             else
             {
-                // here, instead of switching the item for the exact same one, we need to fine the first empty one and put the item there.
-                // if we're splitting a stack of 10 in 2, and want to put the other 5 in a position already occupied by something else, 
-                // then we need to put the item that was there, in another position. Preferably the first free space.
-
-                // BUG HERE : there is a bug here due to the above - implement asap. Whenever you ctrl drag an item from one inv slot to another and 
-                // the item type is the same - ie bronze armour, it won't subtract from the previous slot but would add to the new slot. Giving you double.
+                // currently, it won't let you split a stack into a stack of something that isn't of the same type - everything will get flipped.
 
                 string movedFromItemName = gm.itemsHeld[itemSlotDraggedFrom.itemAmount];
                 string movedToItemName = gm.itemsHeld[movedtoItemSlot.itemAmount];
                 int movedFromAmount = gm.numberOfItems[itemSlotDraggedFrom.itemAmount];
                 int movedToAmount = gm.numberOfItems[movedtoItemSlot.itemAmount];
+
 
                 // this is a different item, we want to switch the items around at this point
                 gm.itemsHeld[itemSlotDraggedFrom.itemAmount] = movedToItemName;
