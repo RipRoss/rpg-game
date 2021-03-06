@@ -139,6 +139,7 @@ public class GameManager : MonoBehaviour
                     {
                         itemsHeld[i] = "";
                     }
+                    break;
                 }
             }
         }
@@ -169,11 +170,10 @@ public class GameManager : MonoBehaviour
                     direction = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)).normalized;
                     multiply = 2f;
                 }
-                print("amount to drop " + amountToDrop);
+
                 if (amountToDrop == 0)
                 {
                     // do all of them
-                    print(GetAmountInInventory(item.itemName));
                     for (int x = 0; x < GetAmountInInventory(item.itemName); x++)
                     {
                         GameObject go = Instantiate(pUps[i].gameObject);

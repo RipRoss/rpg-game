@@ -64,7 +64,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnEndDrag(PointerEventData eventData)
     {
         // this is where the drop on the floor logic will go.
-
         if (eventData.pointerEnter == null)
         {
             int amountToDrop = GameManager.instance.numberOfItems[eventData.pointerDrag.GetComponent<ItemButton>().itemAmount];
@@ -81,9 +80,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             {
                 GameManager.instance.DropItem(replicatedItem, true, amountToDrop);
             }
-
-            Destroy(replicatedItem.gameObject);
         }
+
+        Destroy(replicatedItem.gameObject);
     }
 
     public void OnPointerDown(PointerEventData eventData)
