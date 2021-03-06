@@ -2,3 +2,10 @@
 /Logs/
 /Packages/
 /Temp/
+/MonoBleedingEdge/
+/obj/
+/Temp/
+Unity.*
+UnityCrashHandler32.exe
+UnityPlayer.dll
+.vsconfig
