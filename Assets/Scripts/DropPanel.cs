@@ -22,6 +22,7 @@ public class DropPanel : MonoBehaviour
         else
         {
             DragDrop.MoveItemInInventory(DragDrop.itemMovingTo, true, Int32.Parse(inputField.text));
+            gameObject.transform.parent.gameObject.SetActive(false);
         }        
     }
 }
