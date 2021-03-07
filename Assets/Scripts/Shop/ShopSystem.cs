@@ -10,7 +10,7 @@ public class ShopSystem : MonoBehaviour
     public ShopButton[] shopSlots;
     public int[] stockAmount;
     public string shopName;
-    public Item selectedItem;
+    public static Item selectedItem;
 
     public static ShopSystem instance;
 
@@ -42,6 +42,11 @@ public class ShopSystem : MonoBehaviour
         {
             SellItem();
         }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            SelectItem(new Item());
+        }
     }
 
     public void ShowItemsInShop()
@@ -61,6 +66,8 @@ public class ShopSystem : MonoBehaviour
     public void BuyItem()
     {
         int itemIndex = Array.IndexOf(itemsToSell, selectedItem);
+
+        print(itemIndex);
         print(stockAmount[itemIndex]);
 
         if (stockAmount[itemIndex] == 0)
@@ -91,6 +98,7 @@ public class ShopSystem : MonoBehaviour
         // In reality, when we have the UI, the 'Sell' button will be greyed out, if you do not have the item.
 
         int itemIndex = Array.IndexOf(itemsToSell, selectedItem);
+        print(selectedItem.itemName);
         print(stockAmount[itemIndex]);
 
         if (!GameManager.instance.itemsHeld.Contains(selectedItem.itemName)) // for now we will check here if the user has the item, and tell the person they do not have that item
@@ -108,6 +116,6 @@ public class ShopSystem : MonoBehaviour
 
     public void SelectItem(Item itemToSelect) 
     {
-        selectedItem = itemToSelect;
+        selectedItem = Inventory.instance.activeItem;
     }
 }
