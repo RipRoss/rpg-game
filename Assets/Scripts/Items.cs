@@ -13,7 +13,7 @@ public class Items : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject); // dont destroy the player
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
         else
         {

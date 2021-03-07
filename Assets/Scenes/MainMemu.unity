@@ -782,7 +782,6 @@ MonoBehaviour:
   newGameScene: SampleScene
   continueButton: {fileID: 1743918820}
   anim: {fileID: 1286420262}
-  continueEnabled: 0
 --- !u!114 &1286420258
 MonoBehaviour:
   m_ObjectHideFlags: 0

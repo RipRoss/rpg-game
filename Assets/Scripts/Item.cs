@@ -16,6 +16,10 @@ public class Item : MonoBehaviour
     public int value;
     public Sprite itemSprite;
 
+    [Header("Shop Details")]
+    public int itemCost;
+    public int requiredLevel;
+
     [Header("Item Details")]
     public int amountToChange;
     public bool affectHP, affectMP, affectMR, affectStr; // not used currently, placeholders for future
