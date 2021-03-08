@@ -3,11 +3,12 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopSystem : MonoBehaviour
 {
     public Item[] itemsToSell;
-    public ShopButton[] shopSlots;
+    public Image[] shopSlots;
     public int[] stockAmount;
     public string shopName;
     public static Item selectedItem;
@@ -47,6 +48,11 @@ public class ShopSystem : MonoBehaviour
         {
             SelectItem(new Item());
         }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            ShowItemsInShop();
+        }
     }
 
     public void ShowItemsInShop()
@@ -59,7 +65,19 @@ public class ShopSystem : MonoBehaviour
 
         for (int i = 0; i < itemsToSell.Length; i++)
         {
-            GameManager.instance.addItem(itemsToSell[i]);
+            // loop over itemstosell, set i in the itemslots to whatever we need
+
+            // if there is no item, we want to grey it out
+            // dont display slots for items that aren't there
+            Transform trans = shopSlots[i].gameObject.transform;
+            Transform childTrans = trans.Find("ItemImage");
+
+            if (stockAmount[i] <= 0)
+            {
+                childTrans.GetComponent<Image>().color = new Color(1, 1, 1, .5f);
+            }
+            trans.gameObject.SetActive(true);
+            childTrans.GetComponent<Image>().sprite = itemsToSell[i].itemSprite;
         }
     }
 
