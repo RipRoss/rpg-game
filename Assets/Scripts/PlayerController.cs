@@ -9,10 +9,10 @@ public class PlayerController : MonoBehaviour
 	private Vector2 moveVector; //The vector used to apply movement to the controller.
 	private float origSpeed; //Temp variable that stores the original speed upon start. Used to set speed back when running stops.
 	private float moveSense = 0.2f; //An axis value above this is considered movement.
-
 	private enum MoveState { Stand, Walk, Run } //States for standing, walking and running.
 	private MoveState moveState = MoveState.Stand; //Create and set a MoveState variable for the controller.
 	private Animator anim; //The parent animator.
+	public AudioSource footstep;
 	public Rigidbody2D rb;
     public float panSpeed;
     public static PlayerController instance;
@@ -97,4 +97,10 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 	}
+
+	private void Footstep()
+    {
+		footstep.Play();
+    }
+
 }
