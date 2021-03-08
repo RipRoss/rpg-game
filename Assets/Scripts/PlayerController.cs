@@ -2,7 +2,18 @@
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D rb;
+	private bool moveEnabled = true; //Bool used to check if movement is enabled or not. Use ToggleMovement() to set.
+	[Range(0.0f, 10.0f)]
+	[Tooltip("The movement speed of the controller.")]
+	public float moveSpeed = 5.0f;
+	private Vector2 moveVector; //The vector used to apply movement to the controller.
+	private float origSpeed; //Temp variable that stores the original speed upon start. Used to set speed back when running stops.
+	private float moveSense = 0.2f; //An axis value above this is considered movement.
+
+	private enum MoveState { Stand, Walk, Run } //States for standing, walking and running.
+	private MoveState moveState = MoveState.Stand; //Create and set a MoveState variable for the controller.
+	private Animator anim; //The parent animator.
+	public Rigidbody2D rb;
     public float panSpeed;
     public static PlayerController instance;
     public string areaTransitionName;
@@ -23,38 +34,67 @@ public class PlayerController : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject); // dont destroy the player
-    }
+		origSpeed = moveSpeed;
+		anim = transform.GetComponent<Animator>();
+	}
 
+	public void ToggleMovement(bool enable)
+	{
+		moveEnabled = enable;
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 pos = transform.position;
+	void FixedUpdate()
+	{
+		if (moveEnabled == true)
+		{
+			if (moveVector.x > moveSense || moveVector.x < -moveSense || moveVector.y > moveSense || moveVector.y < -moveSense)
+			{
+				transform.Translate(moveVector * (moveSpeed / 100)); //If movement is enabled and any movement above the threshold (sense) is detected, move controller.
+			}
+		}
+	}
 
-        if (canMove)
-        {
-            if (Input.GetKey(KeyCode.W))
-            {
-                pos.y += panSpeed * Time.deltaTime;
-            }
+	void Update()
+	{
+		//Only check for movement if the movement bool is set to true.
+		if (moveEnabled == true)
+		{
+			//Set the move vector to horizontal and vertical input axis values.
+			moveVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-            if (Input.GetKey(KeyCode.A))
-            {
-                pos.x -= panSpeed * Time.deltaTime;
-            }
+			//If horizontal or vertical axis is above the threshold value (moveSense), set the move state to Walk.
+			if (Input.GetAxisRaw("Horizontal") > moveSense || Input.GetAxisRaw("Horizontal") < (-moveSense) || Input.GetAxisRaw("Vertical") > moveSense || Input.GetAxisRaw("Vertical") < (-moveSense))
+			{
+				moveState = MoveState.Walk;
 
-            if (Input.GetKey(KeyCode.S))
-            {
-                pos.y -= panSpeed * Time.deltaTime;
-            }
+				//Pass the moveVector axes to the animators move variables and set animator's isMoving to true.
+				anim.SetFloat("moveX", moveVector.x);
+				anim.SetFloat("moveY", moveVector.y);
+				anim.SetBool("isMoving", true);
+			}
+			else
+			{
+				//If there's no input, set the state to stand again and change Animator's isMoving to false.
+				moveState = MoveState.Stand;
 
-            if (Input.GetKey(KeyCode.D))
-            {
-                pos.x += panSpeed * Time.deltaTime;
-            }
-        }        
+				anim.SetBool("isMoving", false);
+			}
 
-        transform.position = pos;
-    }
+			if (Input.GetButton("Fire3") && moveState == MoveState.Walk)
+			{
+				//If the controller is moving and we're holding the run button, double the moveSpeed and change to Run state. Also tell animator to display running animation.
+				moveSpeed = origSpeed * 2;
+				moveState = MoveState.Run;
 
+				anim.SetBool("isRunning", true);
+			}
+			else if (Input.GetButtonUp("Fire3") || moveState == MoveState.Stand)
+			{
+				//Set the speed and Animator running bool back when we're not running.
+				moveSpeed = origSpeed;
+
+				anim.SetBool("isRunning", false);
+			}
+		}
+	}
 }
