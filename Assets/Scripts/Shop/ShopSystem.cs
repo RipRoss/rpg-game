@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ShopSystem : MonoBehaviour
 {
     public Item[] itemsToSell;
-    public Image[] shopSlots;
+    public ShopButton[] shopSlots;
     public int[] stockAmount;
     public string shopName;
     public static Item selectedItem;
@@ -65,19 +65,19 @@ public class ShopSystem : MonoBehaviour
 
         for (int i = 0; i < itemsToSell.Length; i++)
         {
-            // loop over itemstosell, set i in the itemslots to whatever we need
-
-            // if there is no item, we want to grey it out
-            // dont display slots for items that aren't there
-            Transform trans = shopSlots[i].gameObject.transform;
-            Transform childTrans = trans.Find("ItemImage");
+            Transform shopButton = shopSlots[i].gameObject.transform;
+            Transform itemImage = shopButton.Find("ItemImage");
+            Transform textTrans = shopButton.Find("Text");
 
             if (stockAmount[i] <= 0)
             {
-                childTrans.GetComponent<Image>().color = new Color(1, 1, 1, .5f);
+                itemImage.GetComponent<Image>().color = new Color(1, 1, 1, .5f);
             }
-            trans.gameObject.SetActive(true);
-            childTrans.GetComponent<Image>().sprite = itemsToSell[i].itemSprite;
+
+            shopSlots[i].itemSlot = i;
+            textTrans.gameObject.GetComponent<Text>().text = stockAmount[i].ToString();
+            shopButton.gameObject.SetActive(true);
+            itemImage.GetComponent<Image>().sprite = itemsToSell[i].itemSprite;
         }
     }
 
@@ -134,6 +134,6 @@ public class ShopSystem : MonoBehaviour
 
     public void SelectItem(Item itemToSelect) 
     {
-        selectedItem = Inventory.instance.activeItem;
+        selectedItem = itemToSelect;
     }
 }
