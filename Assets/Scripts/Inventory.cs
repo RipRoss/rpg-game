@@ -84,5 +84,6 @@ public class Inventory : MonoBehaviour
     public void SelectItem(Item newItem)
     {
         activeItem = newItem;
+        print(activeItem.itemName);
     }
 }

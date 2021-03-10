@@ -13,8 +13,12 @@ public class Item : MonoBehaviour
     [Header("Item Details")]
     public string itemName;
     public string description;
-    public int value;
     public Sprite itemSprite;
+
+    [Header("Shop Details")]
+    public int buyValue;
+    public int sellValue;
+    public int requiredLevel;
 
     [Header("Item Details")]
     public int amountToChange;

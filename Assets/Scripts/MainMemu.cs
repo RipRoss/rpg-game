@@ -9,12 +9,10 @@ public class MainMemu : MonoBehaviour
     public GameObject continueButton;
     public Animator anim;
 
-    public bool continueEnabled = true;
-
     // Start is called before the first frame update
     void Start()
     {
-        if (continueEnabled)
+        if (SaveSystem.HasSave())
         {
             continueButton.SetActive(true);
         } else
@@ -25,12 +23,13 @@ public class MainMemu : MonoBehaviour
 
     public void Continue() 
     {
-
+        anim.SetTrigger("FadeMenu");
     }
 
     public void NewGame()
     {
-        anim.SetTrigger("FadeMenu");   
+        SaveSystem.NewGame();
+        anim.SetTrigger("FadeMenu");
     }
 
     public void ExitGame()

@@ -3,11 +3,13 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 public static class SaveSystem 
 {
+    public static string gamePath = Application.persistentDataPath + "/our_game.gamefile";
+    public static string worldPath = Application.persistentDataPath + "/our_world.gamefile";
+
     public static void SavePlayer ()
     {
-        string path = Application.persistentDataPath + "/our_game.gamefile";
         BinaryFormatter formatter = new BinaryFormatter();
-        using (FileStream stream = new FileStream(path, FileMode.OpenOrCreate))
+        using (FileStream stream = new FileStream(gamePath, FileMode.OpenOrCreate))
         {
             PlayerData data = new PlayerData();
 
@@ -18,11 +20,10 @@ public static class SaveSystem
 
     public static PlayerData LoadPlayer()
     {
-        string path = Application.persistentDataPath + "/our_game.gamefile";
-        if (File.Exists(path))
+        if (File.Exists(gamePath))
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(path, FileMode.Open))
+            using (FileStream stream = new FileStream(gamePath, FileMode.Open))
             {
                 PlayerData data = formatter.Deserialize(stream) as PlayerData;
 
@@ -38,9 +39,8 @@ public static class SaveSystem
 
     public static void SaveWorld()
     {
-        string path = Application.persistentDataPath + "/our_world.gamefile";
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
+        FileStream stream = new FileStream(worldPath, FileMode.OpenOrCreate);
 
         WorldData data = new WorldData();
 
@@ -51,12 +51,11 @@ public static class SaveSystem
 
     public static WorldData LoadWorld() 
     {
-        string path = Application.persistentDataPath + "/our_world.gamefile";
         BinaryFormatter formatter = new BinaryFormatter();
 
-        if (File.Exists(path))
+        if (File.Exists(worldPath))
         {
-            using (FileStream stream = new FileStream(path, FileMode.Open))
+            using (FileStream stream = new FileStream(worldPath, FileMode.Open))
             {
                 WorldData data = formatter.Deserialize(stream) as WorldData;
                 return data;
@@ -65,5 +64,27 @@ public static class SaveSystem
         {
             return null;
         }
+    }
+
+    public static void NewGame() {
+        if (File.Exists(gamePath))
+        {
+            File.Delete(gamePath);
+        }
+
+        if (File.Exists(worldPath))
+        {
+            File.Delete(worldPath);
+        }
+    }
+
+    public static bool HasSave()
+    {
+        if (File.Exists(gamePath) || File.Exists(worldPath))
+        {
+            return true;
+        }
+
+        return false;
     }
 }
