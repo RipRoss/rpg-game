@@ -35,14 +35,18 @@ public class PickupItem : MonoBehaviour
     {
         for (int i = 0; i < pickups.Length; i++)
         {
-            if (pickups[i].gameObject.activeSelf)
+            if (pickups[i] != null)
             {
-                // active
-                pickupsToShow[i] = true;
-            } else
-            {
-                // not active
-                pickupsToShow[i] = false;
+                if (pickups[i].gameObject.activeSelf)
+                {
+                    // active
+                    pickupsToShow[i] = true;
+                }
+                else
+                {
+                    // not active
+                    pickupsToShow[i] = false;
+                }
             }
         }
 
