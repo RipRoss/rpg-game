@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ShopSystem : MonoBehaviour
 {
-    public Item[] itemsToSell;
+    public string[] itemsToSell;
     public ShopButton[] shopSlots;
     public int[] stockAmount;
     public string shopName;
@@ -17,16 +17,8 @@ public class ShopSystem : MonoBehaviour
 
     private void Start()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject); // dont destroy the player
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        itemsToSell = GameManager.instance.referenceItems;
+        instance = this;
+
         ShowItemsInShop();        
     }
 
@@ -52,13 +44,13 @@ public class ShopSystem : MonoBehaviour
             shopSlots[i].itemSlot = i;
             textTrans.gameObject.GetComponent<Text>().text = stockAmount[i].ToString();
             shopButton.gameObject.SetActive(true);
-            itemImage.GetComponent<Image>().sprite = itemsToSell[i].itemSprite;
+            itemImage.GetComponent<Image>().sprite = GameManager.instance.GetItemDetails(itemsToSell[i]).itemSprite;
         }
     }
 
     public void BuyItem()
     {
-        int itemIndex = Array.IndexOf(itemsToSell, selectedItem);
+        int itemIndex = Array.IndexOf(itemsToSell, selectedItem.itemName);
 
         if (stockAmount[itemIndex] == 0)
         {
@@ -84,7 +76,7 @@ public class ShopSystem : MonoBehaviour
     {
         // In reality, when we have the UI, the 'Sell' button will be greyed out, if you do not have the item.
 
-        int itemIndex = Array.IndexOf(itemsToSell, selectedItem);
+        int itemIndex = Array.IndexOf(itemsToSell, selectedItem.itemName);
 
         if (!GameManager.instance.itemsHeld.Contains(selectedItem.itemName)) // for now we will check here if the user has the item, and tell the person they do not have that item
         {

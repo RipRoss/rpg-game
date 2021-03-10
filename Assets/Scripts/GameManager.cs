@@ -178,6 +178,7 @@ public class GameManager : MonoBehaviour
                     {
                         GameObject go = Instantiate(pUps[i].gameObject);
                         go.SetActive(true);
+                        go.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
                         go.transform.position = dropPos;
                         go.GetComponent<Rigidbody2D>().AddForce(direction * multiply, ForceMode2D.Impulse);
                     }
@@ -187,8 +188,8 @@ public class GameManager : MonoBehaviour
                     for (int x = 0; x < amountToDrop; x++)
                     {
                         GameObject go = Instantiate(pUps[i].gameObject);
-                        go.SetActive(true);
                         go.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+                        go.SetActive(true);
                         go.transform.position = dropPos;
                         go.GetComponent<Rigidbody2D>().AddForce(direction * multiply, ForceMode2D.Impulse);
                     }

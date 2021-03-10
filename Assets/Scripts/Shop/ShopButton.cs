@@ -13,6 +13,6 @@ public class ShopButton : MonoBehaviour
     public int itemSlot; // when we create the grid, similar to how we created the inventory, this will be the index value which matches the amount and the item itself.
 
     public void Press() {
-        ShopSystem.instance.SelectItem(ShopSystem.instance.itemsToSell[itemSlot]);
+        ShopSystem.instance.SelectItem(GameManager.instance.GetItemDetails(ShopSystem.instance.itemsToSell[itemSlot]));
     }
 }
