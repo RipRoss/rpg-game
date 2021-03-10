@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1786956565294943216}
   - component: {fileID: 6429117879838349755}
+  - component: {fileID: 8044096101413017300}
   - component: {fileID: 6429117879838349754}
+  - component: {fileID: 4038196105704956808}
   m_Layer: 0
   m_Name: Iron Sword
   m_TagString: Untagged
@@ -87,6 +89,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8044096101413017300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429117879838349753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c541fe7f23a3eb54e9edc3daadb2c3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6429117879838349754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,8 +119,10 @@ MonoBehaviour:
   isArmour: 0
   itemName: Iron Sword
   description: Sword with 30 weapon str
-  value: 15
   itemSprite: {fileID: 21300078, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  buyValue: 0
+  sellValue: 0
+  requiredLevel: 0
   amountToChange: 0
   affectHP: 0
   affectMP: 0
@@ -114,6 +130,27 @@ MonoBehaviour:
   affectStr: 0
   weaponStr: 0
   armourStr: 0
+--- !u!50 &4038196105704956808
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429117879838349753}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6429117879848834537
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +161,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4612893802966134229}
   - component: {fileID: 6429117879848834539}
+  - component: {fileID: 7808962520858370965}
   - component: {fileID: 6429117879848834538}
+  - component: {fileID: 8789097792839376177}
   m_Layer: 0
   m_Name: Bronze Sword
   m_TagString: Untagged
@@ -201,6 +240,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7808962520858370965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429117879848834537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c541fe7f23a3eb54e9edc3daadb2c3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6429117879848834538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,8 +270,10 @@ MonoBehaviour:
   isArmour: 0
   itemName: Bronze Sword
   description: Sword with 15 weapon str
-  value: 15
   itemSprite: {fileID: 21300074, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  buyValue: 0
+  sellValue: 0
+  requiredLevel: 0
   amountToChange: 0
   affectHP: 0
   affectMP: 0
@@ -228,6 +281,27 @@ MonoBehaviour:
   affectStr: 0
   weaponStr: 0
   armourStr: 0
+--- !u!50 &8789097792839376177
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429117879848834537}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6429117880038594878
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +312,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4164928922818414251}
   - component: {fileID: 6429117880038594872}
+  - component: {fileID: 166916705900039444}
   - component: {fileID: 6429117880038594879}
+  - component: {fileID: 1107618042046962692}
   m_Layer: 0
   m_Name: Health Potion
   m_TagString: Untagged
@@ -315,6 +391,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &166916705900039444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429117880038594878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c541fe7f23a3eb54e9edc3daadb2c3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6429117880038594879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,8 +421,10 @@ MonoBehaviour:
   isArmour: 0
   itemName: Health Potion
   description: Restores 100 HP
-  value: 5
   itemSprite: {fileID: 21300000, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  buyValue: 0
+  sellValue: 0
+  requiredLevel: 0
   amountToChange: 100
   affectHP: 1
   affectMP: 0
@@ -342,6 +432,27 @@ MonoBehaviour:
   affectStr: 0
   weaponStr: 0
   armourStr: 0
+--- !u!50 &1107618042046962692
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429117880038594878}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6429117880526746166
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +463,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7462814938144218658}
   - component: {fileID: 6429117880526746160}
+  - component: {fileID: 5944472746502495617}
   - component: {fileID: 6429117880526746167}
+  - component: {fileID: 352763045980228987}
   m_Layer: 0
   m_Name: Bronze Armour
   m_TagString: Untagged
@@ -429,6 +542,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5944472746502495617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429117880526746166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c541fe7f23a3eb54e9edc3daadb2c3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6429117880526746167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,8 +572,10 @@ MonoBehaviour:
   isArmour: 1
   itemName: Bronze Armour
   description: Restores 50 Armour
-  value: 15
   itemSprite: {fileID: 21300010, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  buyValue: 0
+  sellValue: 0
+  requiredLevel: 0
   amountToChange: 0
   affectHP: 0
   affectMP: 0
@@ -456,6 +583,27 @@ MonoBehaviour:
   affectStr: 0
   weaponStr: 0
   armourStr: 0
+--- !u!50 &352763045980228987
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429117880526746166}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6429117880877509584
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,6 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d5825a7d04e2ee428175e45474996f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemList: []
 --- !u!1 &6429117881300774143
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +664,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3913020601078267147}
   - component: {fileID: 6429117881300774137}
+  - component: {fileID: 5405597686895856644}
   - component: {fileID: 6429117881300774136}
+  - component: {fileID: 6966188515345450673}
   m_Layer: 0
   m_Name: Iron Armour
   m_TagString: Untagged
@@ -592,6 +743,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5405597686895856644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429117881300774143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c541fe7f23a3eb54e9edc3daadb2c3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6429117881300774136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,8 +773,10 @@ MonoBehaviour:
   isArmour: 1
   itemName: Iron Armour
   description: Restores 75 Armour
-  value: 15
   itemSprite: {fileID: 21300014, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  buyValue: 0
+  sellValue: 0
+  requiredLevel: 0
   amountToChange: 0
   affectHP: 0
   affectMP: 0
@@ -619,6 +784,27 @@ MonoBehaviour:
   affectStr: 0
   weaponStr: 0
   armourStr: 0
+--- !u!50 &6966188515345450673
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429117881300774143}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6429117881578834722
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +815,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5341003107266729972}
   - component: {fileID: 6429117881578834732}
+  - component: {fileID: 3992306621495293791}
   - component: {fileID: 6429117881578834723}
+  - component: {fileID: 5554077000595440691}
   m_Layer: 0
   m_Name: Mana Potion
   m_TagString: Untagged
@@ -706,6 +894,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3992306621495293791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429117881578834722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c541fe7f23a3eb54e9edc3daadb2c3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6429117881578834723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,8 +924,10 @@ MonoBehaviour:
   isArmour: 0
   itemName: Mana Potion
   description: Restores 50 Mana
-  value: 5
   itemSprite: {fileID: 21300004, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  buyValue: 0
+  sellValue: 0
+  requiredLevel: 0
   amountToChange: 50
   affectHP: 0
   affectMP: 1
@@ -733,3 +935,24 @@ MonoBehaviour:
   affectStr: 0
   weaponStr: 0
   armourStr: 0
+--- !u!50 &5554077000595440691
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429117881578834722}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

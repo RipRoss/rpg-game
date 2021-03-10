@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Items : MonoBehaviour
 {
-    static Items instance;
+    public static Items instance;
+    public Item[] itemList;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,8 @@ public class Items : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame

@@ -4273,7 +4273,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6429117880223111220}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1779294997}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1e648fd50fcd8846bd74fe305fe21b8, type: 3}
@@ -4453,7 +4453,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6429117880223111220}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1345033919}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1e648fd50fcd8846bd74fe305fe21b8, type: 3}
@@ -5370,8 +5370,10 @@ MonoBehaviour:
   isArmour: 0
   itemName: Health Potion
   description: Health Potion for pussies
-  value: 5
   itemSprite: {fileID: 21300000, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  buyValue: 0
+  sellValue: 0
+  requiredLevel: 0
   amountToChange: 100
   affectHP: 1
   affectMP: 0
@@ -6139,6 +6141,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485900856}
   m_CullTransparentMesh: 0
+--- !u!1 &505676896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6429117881300774143, guid: 8ab2a9cdae75d804aa38096d036b2709,
+    type: 3}
+  m_PrefabInstance: {fileID: 6429117880223111220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &505676900
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505676896}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &515376415
 GameObject:
   m_ObjectHideFlags: 0
@@ -9392,7 +9421,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6429117880223111220}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1384458979}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1e648fd50fcd8846bd74fe305fe21b8, type: 3}
@@ -9404,7 +9433,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6429117880223111220}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1869556033}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1e648fd50fcd8846bd74fe305fe21b8, type: 3}
@@ -10174,8 +10203,10 @@ MonoBehaviour:
   isArmour: 0
   itemName: Gold Coins
   description: Lots of gold
-  value: 100
   itemSprite: {fileID: 21300014, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  buyValue: 0
+  sellValue: 0
+  requiredLevel: 0
   amountToChange: 100
   affectHP: 0
   affectMP: 0
@@ -10513,7 +10544,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6429117880223111220}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 505676896}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1e648fd50fcd8846bd74fe305fe21b8, type: 3}
@@ -12002,8 +12033,10 @@ MonoBehaviour:
   isArmour: 1
   itemName: Iron Armour
   description: Iron Armour for pussies
-  value: 5
   itemSprite: {fileID: 21300014, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  buyValue: 0
+  sellValue: 0
+  requiredLevel: 0
   amountToChange: 100
   affectHP: 0
   affectMP: 0
@@ -12943,6 +12976,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337936262}
   m_CullTransparentMesh: 0
+--- !u!1 &1345033919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6429117880526746166, guid: 8ab2a9cdae75d804aa38096d036b2709,
+    type: 3}
+  m_PrefabInstance: {fileID: 6429117880223111220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1345033923
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345033919}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1370275137
 GameObject:
   m_ObjectHideFlags: 0
@@ -13017,6 +13077,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370275137}
   m_CullTransparentMesh: 0
+--- !u!1 &1384458979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6429117879848834537, guid: 8ab2a9cdae75d804aa38096d036b2709,
+    type: 3}
+  m_PrefabInstance: {fileID: 6429117880223111220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1384458983
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384458979}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1393541262
 GameObject:
   m_ObjectHideFlags: 0
@@ -13102,7 +13189,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6429117880223111220}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1581059405}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1e648fd50fcd8846bd74fe305fe21b8, type: 3}
@@ -14883,6 +14970,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578056159}
   m_CullTransparentMesh: 0
+--- !u!1 &1581059405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6429117881578834722, guid: 8ab2a9cdae75d804aa38096d036b2709,
+    type: 3}
+  m_PrefabInstance: {fileID: 6429117880223111220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1581059409
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581059405}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1592058871
 GameObject:
   m_ObjectHideFlags: 0
@@ -15417,8 +15531,10 @@ MonoBehaviour:
   isArmour: 1
   itemName: Bronze Armour
   description: Bronze Potion for pussies
-  value: 5
   itemSprite: {fileID: 21300010, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  buyValue: 0
+  sellValue: 0
+  requiredLevel: 0
   amountToChange: 100
   affectHP: 0
   affectMP: 0
@@ -16085,8 +16201,10 @@ MonoBehaviour:
   isArmour: 0
   itemName: Mana Potion
   description: Mana Potion for pussies
-  value: 5
   itemSprite: {fileID: 21300004, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  buyValue: 0
+  sellValue: 0
+  requiredLevel: 0
   amountToChange: 50
   affectHP: 0
   affectMP: 1
@@ -16115,6 +16233,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!1 &1779294997 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6429117880038594878, guid: 8ab2a9cdae75d804aa38096d036b2709,
+    type: 3}
+  m_PrefabInstance: {fileID: 6429117880223111220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1779295001
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779294997}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1804060681
 GameObject:
   m_ObjectHideFlags: 0
@@ -16320,8 +16465,10 @@ MonoBehaviour:
   isArmour: 0
   itemName: Iron Sword
   description: Iron sword jacko
-  value: 5
   itemSprite: {fileID: 21300078, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  buyValue: 0
+  sellValue: 0
+  requiredLevel: 0
   amountToChange: 100
   affectHP: 0
   affectMP: 0
@@ -16591,6 +16738,33 @@ MonoBehaviour:
   m_Text: '
 
 '
+--- !u!1 &1869556033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6429117879838349753, guid: 8ab2a9cdae75d804aa38096d036b2709,
+    type: 3}
+  m_PrefabInstance: {fileID: 6429117880223111220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1869556037
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869556033}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1887497820
 GameObject:
   m_ObjectHideFlags: 0
@@ -19239,6 +19413,34 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1565303207, guid: 8ab2a9cdae75d804aa38096d036b2709, type: 3}
+      propertyPath: itemList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565303207, guid: 8ab2a9cdae75d804aa38096d036b2709, type: 3}
+      propertyPath: itemList.Array.data[0]
+      value: 
+      objectReference: {fileID: 253722891}
+    - target: {fileID: 1565303207, guid: 8ab2a9cdae75d804aa38096d036b2709, type: 3}
+      propertyPath: itemList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1397871383}
+    - target: {fileID: 1565303207, guid: 8ab2a9cdae75d804aa38096d036b2709, type: 3}
+      propertyPath: itemList.Array.data[2]
+      value: 
+      objectReference: {fileID: 304556547}
+    - target: {fileID: 1565303207, guid: 8ab2a9cdae75d804aa38096d036b2709, type: 3}
+      propertyPath: itemList.Array.data[3]
+      value: 
+      objectReference: {fileID: 1136981196}
+    - target: {fileID: 1565303207, guid: 8ab2a9cdae75d804aa38096d036b2709, type: 3}
+      propertyPath: itemList.Array.data[4]
+      value: 
+      objectReference: {fileID: 978259422}
+    - target: {fileID: 1565303207, guid: 8ab2a9cdae75d804aa38096d036b2709, type: 3}
+      propertyPath: itemList.Array.data[5]
+      value: 
+      objectReference: {fileID: 992936334}
     - target: {fileID: 6429117879838349755, guid: 8ab2a9cdae75d804aa38096d036b2709,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

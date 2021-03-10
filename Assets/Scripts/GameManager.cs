@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
 
     public void DropItem(Item item, bool dragDrop, int amountToDrop = 0)
     {
-        Item[] pUps = PickupItem.instance.pickups;
+        Item[] pUps = Items.instance.itemList;
         Pickup.canPickUp = false;
         for (int i = 0; i < pUps.Length; i ++)
         {
@@ -188,6 +188,7 @@ public class GameManager : MonoBehaviour
                     {
                         GameObject go = Instantiate(pUps[i].gameObject);
                         go.SetActive(true);
+                        go.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
                         go.transform.position = dropPos;
                         go.GetComponent<Rigidbody2D>().AddForce(direction * multiply, ForceMode2D.Impulse);
                     }
