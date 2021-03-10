@@ -2,7 +2,7 @@
 
 public class PlayerController : MonoBehaviour
 {
-	private bool moveEnabled = true; //Bool used to check if movement is enabled or not. Use ToggleMovement() to set.
+	public bool moveEnabled = true; //Bool used to check if movement is enabled or not. Use ToggleMovement() to set.
 	[Range(0.0f, 10.0f)]
 	[Tooltip("The movement speed of the controller.")]
 	public float moveSpeed = 5.0f;
@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 	private float moveSense = 0.2f; //An axis value above this is considered movement.
 	private enum MoveState { Stand, Walk, Run } //States for standing, walking and running.
 	private MoveState moveState = MoveState.Stand; //Create and set a MoveState variable for the controller.
-	private Animator anim; //The parent animator.
+	public Animator anim; //The parent animator.
 	public AudioSource footstep;
 	public Rigidbody2D rb;
     public float panSpeed;

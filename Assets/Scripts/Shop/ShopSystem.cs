@@ -26,33 +26,8 @@ public class ShopSystem : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        //BuyItem();
-
-        //ShowItemsInShop();        
-    }
-
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            BuyItem();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SellItem();
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            SelectItem(new Item());
-        }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            ShowItemsInShop();
-        }
+        itemsToSell = GameManager.instance.referenceItems;
+        ShowItemsInShop();        
     }
 
     public void ShowItemsInShop()
@@ -85,9 +60,6 @@ public class ShopSystem : MonoBehaviour
     {
         int itemIndex = Array.IndexOf(itemsToSell, selectedItem);
 
-        print(itemIndex);
-        print(stockAmount[itemIndex]);
-
         if (stockAmount[itemIndex] == 0)
         {
             // if the stock is empty, do nothing - we will display something at a later date
@@ -95,16 +67,13 @@ public class ShopSystem : MonoBehaviour
             return;
         }
 
-        print("Current Gold : " + GameManager.instance.currentGold);
-        print("Item Cost : " + selectedItem.sellValue);
-
         if (selectedItem.sellValue <= GameManager.instance.currentGold)
         {
             // we need to remove stock here
             GameManager.instance.addItem(selectedItem);
             stockAmount[itemIndex]--;
-            GameManager.instance.removeMoney(selectedItem.sellValue);
-
+            GameManager.instance.removeMoney(selectedItem.buyValue);
+            ShowItemsInShop();
         } else
         {
             Debug.LogError("YOU CAN'T AFFORD THAT ITEM, YOU ONLY HAVE " + GameManager.instance.currentGold + " GOLD LEFT");
@@ -116,8 +85,6 @@ public class ShopSystem : MonoBehaviour
         // In reality, when we have the UI, the 'Sell' button will be greyed out, if you do not have the item.
 
         int itemIndex = Array.IndexOf(itemsToSell, selectedItem);
-        print(selectedItem.itemName);
-        print(stockAmount[itemIndex]);
 
         if (!GameManager.instance.itemsHeld.Contains(selectedItem.itemName)) // for now we will check here if the user has the item, and tell the person they do not have that item
         {
@@ -130,6 +97,7 @@ public class ShopSystem : MonoBehaviour
         GameManager.instance.RemoveItem(selectedItem.itemName, 1); // the amount to remove, will be the amount put into the UI... but  for now thiss will do
         stockAmount[itemIndex]++; // this will be += the amount above
         GameManager.instance.addMoney(selectedItem.sellValue);
+        ShowItemsInShop();
     }
 
     public void SelectItem(Item itemToSelect) 
