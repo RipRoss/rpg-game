@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
     public bool spawned = false;
 
-    public int currentHealth;
 
     void Start()
     {

@@ -29,7 +29,7 @@ public class Item : MonoBehaviour
         if (affectHP)
         {
             // we can do maxHealth - currrentHealth to work out the difference. Ie, we never want to go above 100 health. 
-            PlayerController.instance.currentHealth += 100;
+            // PlayerController.instance.currentHealth += 100;
         }
     }
 }
