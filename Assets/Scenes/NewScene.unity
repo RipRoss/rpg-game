@@ -165,8 +165,6 @@ Transform:
   m_Father: {fileID: 1628279641}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!1001 &218537511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,7 +234,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04e38b77dc1a9d3428098cbad2dfaf16, type: 3}
->>>>>>> b03ac7c (inital commit)
 --- !u!1 &221730090
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,8 +552,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!1001 &626673669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -626,7 +621,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04e38b77dc1a9d3428098cbad2dfaf16, type: 3}
->>>>>>> b03ac7c (inital commit)
 --- !u!1 &664715116
 GameObject:
   m_ObjectHideFlags: 0
@@ -2651,8 +2645,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efce28f3133676f4889befce15340a68, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!1001 &904237914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2727,7 +2719,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04e38b77dc1a9d3428098cbad2dfaf16, type: 3}
->>>>>>> b03ac7c (inital commit)
 --- !u!1 &1058460296
 GameObject:
   m_ObjectHideFlags: 0
@@ -3269,8 +3260,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
-<<<<<<< HEAD
-=======
 --- !u!1001 &1146054314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3345,7 +3334,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04e38b77dc1a9d3428098cbad2dfaf16, type: 3}
->>>>>>> b03ac7c (inital commit)
 --- !u!1 &1306198950
 GameObject:
   m_ObjectHideFlags: 0
@@ -19673,8 +19661,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
-<<<<<<< HEAD
-=======
 --- !u!1001 &1473817398848753446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19749,4 +19735,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04e38b77dc1a9d3428098cbad2dfaf16, type: 3}
->>>>>>> b03ac7c (inital commit)
