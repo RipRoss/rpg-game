@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class PlayerData
 {
-    public int level;
     public int health;
     public int mana;
     public int energy;
@@ -13,19 +12,26 @@ public class PlayerData
     public int[] numberOfItems;
     public string[] itemsHeld;
     public float[] position;
+    public int currentXP;
+    public int targetXP;
+    public int playerLevel;
 
     public string sceneName;
 
     public PlayerData ()
     {
         gold = GameManager.instance.currentGold;
-        level = 1;
+        playerLevel = XPManager.instance.playerLevel;
+        currentXP = XPManager.instance.currentXP;
+        targetXP = XPManager.instance.targetXP;
         health = 100;
         mana = 100;
         energy = 100;
         sceneName = SceneManager.GetActiveScene().name;
         itemsHeld = GameManager.instance.itemsHeld;
         numberOfItems = GameManager.instance.numberOfItems;
+
+        Debug.Log(playerLevel);
 
         position = new float[3];
         position[0] = PlayerController.instance.transform.position.x;

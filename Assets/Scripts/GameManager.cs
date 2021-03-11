@@ -24,14 +24,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
 
         InvokeRepeating("SaveData", 0.0f, 10.0f);
@@ -265,6 +265,9 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(data.sceneName); // i think we need to do this at the main menu stage
                 PlayerController.instance.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
                 PlayerController.instance.spawned = true;
+                XPManager.instance.playerLevel = data.playerLevel;
+                XPManager.instance.currentXP = data.currentXP;
+                XPManager.instance.targetXP = data.targetXP;
             }
         }
     }
